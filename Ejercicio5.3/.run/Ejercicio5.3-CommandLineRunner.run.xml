@@ -1,0 +1,10 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Ejercicio5.3-CommandLineRunner" type="Application" factoryName="Application">
+    <option name="MAIN_CLASS_NAME" value="com.bosonit.formacion.Ejercicio53.Application" />
+    <module name="Ejercicio5.3" />
+    <option name="PROGRAM_PARAMETERS" value="a b c d e n k" />
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>
