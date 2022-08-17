@@ -1,0 +1,34 @@
+{
+	"info": {
+		"_postman_id": "f916009c-e1a0-4ef7-9ae8-20dbb5a3aa54",
+		"name": "Ejercicio 5.1",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "22787527"
+	},
+	"item": [
+		{
+			"name": "getName",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "addUser",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "getUser",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		}
+	]
+}
