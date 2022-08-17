@@ -1,5 +1,4 @@
 public class Person {
-
     private String name, city;
     private int age;
 
@@ -37,5 +36,4 @@ public class Person {
     public void setCity(String newCity){
         this.city = newCity;
     }
-
 }
