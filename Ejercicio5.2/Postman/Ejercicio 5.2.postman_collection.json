@@ -1,0 +1,113 @@
+{
+	"info": {
+		"_postman_id": "b3bdcb97-ed00-4f21-bea2-f29cb6071acd",
+		"name": "Ejercicio 5.2",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "22787527"
+	},
+	"item": [
+		{
+			"name": "addPerson",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "name",
+						"value": "Adrián",
+						"type": "text"
+					},
+					{
+						"key": "city",
+						"value": "Guadalajara",
+						"type": "text"
+					},
+					{
+						"key": "age",
+						"value": "24",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:8080/controlador1/addPersona",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"controlador1",
+						"addPersona"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getPerson",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/controlador2/getPerson",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"controlador2",
+						"getPerson"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "addCity",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "name",
+						"value": "Guadalajara",
+						"type": "text"
+					},
+					{
+						"key": "numOfInhabitants",
+						"value": "80000",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:8080/controlador1/addCity",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"controlador1",
+						"addCity"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getCitiesList",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/controlador2/getCities",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"controlador2",
+						"getCities"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
