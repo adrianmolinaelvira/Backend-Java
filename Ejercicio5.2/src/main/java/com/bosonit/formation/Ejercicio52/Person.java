@@ -10,4 +10,12 @@ public class Person {
     private String name, city;
     private int age;
 
+    public Person(){
+
+    }
+
+    public Person(String name){
+        setName(name);
+    }
+
 }

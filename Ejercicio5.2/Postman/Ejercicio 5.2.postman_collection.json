@@ -108,6 +108,14 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "getBean",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
 		}
 	]
 }
