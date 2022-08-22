@@ -1,0 +1,12 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="SpringBoot" type="Application" factoryName="Application">
+    <envs>
+      <env name="new.property" value="new.property no tiene valor" />
+    </envs>
+    <option name="MAIN_CLASS_NAME" value="com.bosonit.formacion.ej5.properties.Application" />
+    <module name="ej5.4-properties" />
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>
