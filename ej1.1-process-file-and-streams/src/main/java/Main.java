@@ -17,7 +17,7 @@ public class Main {
         ProccesFile proccesFile = new ProccesFile();
         FilterGroup filterGroup = new FilterGroup();
 
-        List<Person> peopleList  = proccesFile.fileToList(args[0]);
+        List<Person> peopleList  = proccesFile.fileToList(Paths.get(args[0]));
 
         //a
         filterGroup.filterByAge(peopleList);

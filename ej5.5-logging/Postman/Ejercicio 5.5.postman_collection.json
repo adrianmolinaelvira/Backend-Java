@@ -1,0 +1,18 @@
+{
+	"info": {
+		"_postman_id": "39864742-77bf-401c-9381-5e782d1bdddd",
+		"name": "Ejercicio 5.5",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "22787527"
+	},
+	"item": [
+		{
+			"name": "Mapping",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		}
+	]
+}

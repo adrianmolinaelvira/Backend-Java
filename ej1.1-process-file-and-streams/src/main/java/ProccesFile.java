@@ -11,13 +11,13 @@ import java.util.stream.Collectors;
 
 public class ProccesFile {
 
-    public List<Person> fileToList(String fileName){
+    public List<Person> fileToList(Path pathFile){
 
         List<Person> personList = new ArrayList<Person>();
 
         try {
-            Path path = Paths.get(fileName);
-            BufferedReader reader = Files.newBufferedReader(path);
+
+            BufferedReader reader = Files.newBufferedReader(pathFile);
 
             String line = null;
 

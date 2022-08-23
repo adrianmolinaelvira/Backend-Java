@@ -1,7 +1,7 @@
 <component name="ProjectRunConfigurationManager">
   <configuration default="false" name="Main" type="Application" factoryName="Application" nameIsGenerated="true">
     <option name="MAIN_CLASS_NAME" value="Main" />
-    <module name="Ejercicio1.1" />
+    <module name="ej1.1-process-file-and-streams" />
     <option name="PROGRAM_PARAMETERS" value="src/main/resources/people.csv" />
     <method v="2">
       <option name="Make" enabled="true" />
