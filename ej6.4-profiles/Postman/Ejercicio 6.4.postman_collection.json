@@ -1,0 +1,64 @@
+{
+	"info": {
+		"_postman_id": "4f7460a2-4c0f-432c-b664-527f72e4a877",
+		"name": "Ejercicio 6.4",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "22787527"
+	},
+	"item": [
+		{
+			"name": "getParams",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8081/parametros",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"parametros"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getMiConfiguracion",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8081/miconfiguracion",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"miconfiguracion"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getPerfil",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8081/perfil",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"perfil"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
