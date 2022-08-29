@@ -3,19 +3,20 @@ package com.bosonit.formacion.ej7.crudvalidation.person.domain;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
 
 @Data
 @Entity
 @Table(name="person")
-public class Person {
+public class Person implements Serializable {
 
     @Id
     @GeneratedValue
     private int id_person;
 
     @Column(length = 10, nullable = false)
-    private String user;
+    private String username;
 
     @Column(nullable = false)
     private String password;

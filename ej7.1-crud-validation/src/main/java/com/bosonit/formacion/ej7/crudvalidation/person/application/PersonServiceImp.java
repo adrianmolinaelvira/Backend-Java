@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -20,6 +21,8 @@ public class PersonServiceImp implements PersonService{
 
     @Override
     public PersonOutputDto addPerson(PersonInputDto newPersonDto) throws Exception {
+        newPersonDto.setCreated_date(new Date());
+
         if(newPersonDto.getUser() == null)
             throw new Exception("User field can not be null");
         else if(newPersonDto.getUser().length() > 10 || newPersonDto.getUser().length() < 6)
@@ -40,12 +43,16 @@ public class PersonServiceImp implements PersonService{
             throw new Exception("City can not be null");
         else if(newPersonDto.getCreated_date() == null)
             throw new Exception("Created date can not be null");
-        {
+       else {
+
             Person newPerson = newPersonDto.transformIntoPerson();
+
+            System.out.println(newPersonDto);
+            System.out.println(newPerson);
 
             personRepository.save(newPerson);
 
-            return new PersonOutputDto();
+            return new PersonOutputDto().transformPersonIntoPersonOutputDto(newPerson);
         }
     }
 
@@ -60,11 +67,11 @@ public class PersonServiceImp implements PersonService{
     }
 
     @Override
-    public PersonOutputDto findPersonByName(String name) throws Exception {
-       Optional<Person> personOptional = personRepository.findByName(name);
+    public PersonOutputDto findPersonByUsername(String username) throws Exception {
+       Optional<Person> personOptional = personRepository.findByUsername(username);
 
        if(personOptional.isEmpty())
-           throw new Exception("Person does not existe");
+           throw new Exception("Person does not exist");
 
        return new PersonOutputDto().transformPersonIntoPersonOutputDto(personOptional.get());
 

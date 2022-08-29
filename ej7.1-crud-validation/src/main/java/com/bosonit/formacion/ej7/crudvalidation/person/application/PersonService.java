@@ -10,7 +10,7 @@ public interface PersonService {
 
     public PersonOutputDto findPersonById(int id) throws Exception;
 
-    public PersonOutputDto findPersonByName(String Name) throws Exception;
+    public PersonOutputDto findPersonByUsername(String Name) throws Exception;
 
     public List<PersonOutputDto> getAllPeople();
 }

@@ -19,7 +19,7 @@ public class PersonOutputDto {
     private Date termination_date;
 
     public PersonOutputDto transformPersonIntoPersonOutputDto(Person person){
-        this.user = person.getUser();
+        this.user = person.getUsername();
         this.name = person.getName();
         this.surname = person.getSurname();
         this.company_email = person.getCompany_email();

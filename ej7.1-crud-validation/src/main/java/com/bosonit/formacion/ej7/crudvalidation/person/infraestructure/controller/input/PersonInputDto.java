@@ -21,7 +21,7 @@ public class PersonInputDto {
 
     public Person transformIntoPerson(){
         Person person = new Person();
-        person.setUser(this.user);
+        person.setUsername(this.user);
         person.setPassword(this.password);
         person.setName(this.name);
         person.setSurname(this.surname);
