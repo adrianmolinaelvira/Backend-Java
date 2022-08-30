@@ -51,7 +51,7 @@ public class PersonServiceImp implements PersonService{
 
             personRepository.save(newPerson);
 
-            return new PersonOutputDto().transformPersonIntoPersonOutputDto(newPerson);
+            return new PersonOutputDto(newPerson);
     }
 
     @Override
@@ -61,7 +61,7 @@ public class PersonServiceImp implements PersonService{
         if(personOptional.isEmpty())
             throw new Exception("Person does not exist");
 
-        return new PersonOutputDto().transformPersonIntoPersonOutputDto(personOptional.get());
+        return new PersonOutputDto(personOptional.get());
     }
 
     @Override
@@ -71,7 +71,7 @@ public class PersonServiceImp implements PersonService{
        if(personOptional.isEmpty())
            throw new Exception("Person does not exist");
 
-       return new PersonOutputDto().transformPersonIntoPersonOutputDto(personOptional.get());
+       return new PersonOutputDto(personOptional.get());
 
     }
 
@@ -84,7 +84,7 @@ public class PersonServiceImp implements PersonService{
         /*for(Person person : peopleList)
             peopleOutputDto.add(new PersonOutputDto().transformPersonIntoPersonOutputDto(person));*/
 
-        peopleOutputDto = peopleList.stream().map(person -> new PersonOutputDto().transformPersonIntoPersonOutputDto(person)).collect(Collectors.toList());
+        peopleOutputDto = peopleList.stream().map(person -> new PersonOutputDto(person)).collect(Collectors.toList());
 
         return peopleOutputDto;
     }
@@ -111,7 +111,7 @@ public class PersonServiceImp implements PersonService{
 
         personRepository.save(person);
 
-        return new PersonOutputDto().transformPersonIntoPersonOutputDto(person);
+        return new PersonOutputDto(person);
     }
 
     @Override

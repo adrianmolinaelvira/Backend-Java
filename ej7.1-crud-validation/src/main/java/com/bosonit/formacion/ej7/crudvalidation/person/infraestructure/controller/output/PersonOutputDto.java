@@ -7,6 +7,7 @@ import java.util.Date;
 
 @Data
 public class PersonOutputDto {
+    private int person_id;
     private String user;
     private String name;
     private String surname;
@@ -18,7 +19,8 @@ public class PersonOutputDto {
     private String imagen_url;
     private Date termination_date;
 
-    public PersonOutputDto transformPersonIntoPersonOutputDto(Person person){
+    public PersonOutputDto(Person person){
+        this.person_id = person.getId_person();
         this.user = person.getUsername();
         this.name = person.getName();
         this.surname = person.getSurname();
@@ -29,8 +31,6 @@ public class PersonOutputDto {
         this.created_date = person.getCreated_date();
         this.imagen_url = person.getImagen_url();
         this.termination_date = getTermination_date();
-
-        return this;
     }
 }
 
