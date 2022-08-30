@@ -4,6 +4,7 @@ import com.bosonit.formacion.ej7.crudvalidation.person.infraestructure.controlle
 import com.bosonit.formacion.ej7.crudvalidation.person.infraestructure.controller.output.PersonOutputDto;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface PersonService {
     public PersonOutputDto addPerson(PersonInputDto newPersonDto) throws Exception;
@@ -13,4 +14,8 @@ public interface PersonService {
     public PersonOutputDto findPersonByUsername(String Name) throws Exception;
 
     public List<PersonOutputDto> getAllPeople();
+
+    public PersonOutputDto updatePerson(int id, PersonInputDto personInputDto) throws Exception;
+
+    public String deletePerson(int id) throws Exception;
 }

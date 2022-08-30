@@ -13,7 +13,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"name\": \"Adrián\",\r\n    \"user\": \"adrimo100\",\r\n    \"password\": \"12345\",\r\n    \"surname\": \"Molina\",\r\n    \"company_email\": \"adrian@work.api\",\r\n    \"personal_email\": \"adrian@personal.api\",\r\n    \"city\": \"Guadalajara\",\r\n    \"active\": true\r\n}",
+					"raw": "{\r\n    \"name\": \"jorge\",\r\n    \"user\": \"jorge100\",\r\n    \"password\": \"12345\",\r\n    \"surname\": \"Pérez\",\r\n    \"company_email\": \"jorge@work.api\",\r\n    \"personal_email\": \"jorge@personal.api\",\r\n    \"city\": \"Guadalajara\",\r\n    \"active\": true\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -72,7 +72,7 @@
 			"response": []
 		},
 		{
-			"name": "New Request",
+			"name": "getPersonByUsername",
 			"request": {
 				"method": "GET",
 				"header": [],
@@ -86,6 +86,53 @@
 						"person",
 						"username",
 						"jorge100"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "updatePerson",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"jorge\",\r\n    \"user\": \"jorge200\",\r\n    \"password\": \"54321\",\r\n    \"surname\": \"Pérez\",\r\n    \"company_email\": \"jorge@work.api\",\r\n    \"personal_email\": \"jorge@personal.api\",\r\n    \"city\": \"Cuenca\",\r\n    \"active\": true\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/person/7",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"person",
+						"7"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deletePerson",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/person/7",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"person",
+						"7"
 					]
 				}
 			},
