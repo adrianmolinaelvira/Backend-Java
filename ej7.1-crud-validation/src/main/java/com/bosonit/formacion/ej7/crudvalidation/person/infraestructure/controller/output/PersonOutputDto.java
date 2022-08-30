@@ -30,7 +30,7 @@ public class PersonOutputDto {
         this.active = person.getActive();
         this.created_date = person.getCreated_date();
         this.imagen_url = person.getImagen_url();
-        this.termination_date = getTermination_date();
+        this.termination_date = person.getTermination_date();
     }
 }
 
