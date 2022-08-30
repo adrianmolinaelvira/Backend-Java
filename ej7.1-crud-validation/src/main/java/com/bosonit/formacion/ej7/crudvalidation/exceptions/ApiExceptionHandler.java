@@ -12,12 +12,12 @@ public class ApiExceptionHandler {
     @ExceptionHandler(EntityNotFoundException.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
     public String handleEntityNotFoundException(EntityNotFoundException exception) {
-        return exception.getMessage();
+        return  exception.getTimeStamp() + " - " + exception.getMessage();
     }
 
     @ExceptionHandler(UnprocessableEntityException.class)
     @ResponseStatus(HttpStatus.UNPROCESSABLE_ENTITY)
     public String handleUnprocessableEntityException(UnprocessableEntityException exception) {
-        return exception.getMessage();
+        return exception.getTimeStamp() + " - " + exception.getMessage();
     }
 }
