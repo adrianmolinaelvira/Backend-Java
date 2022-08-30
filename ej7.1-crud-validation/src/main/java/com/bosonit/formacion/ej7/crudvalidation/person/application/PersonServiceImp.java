@@ -1,5 +1,7 @@
 package com.bosonit.formacion.ej7.crudvalidation.person.application;
 
+import com.bosonit.formacion.ej7.crudvalidation.exceptions.EntityNotFoundException;
+import com.bosonit.formacion.ej7.crudvalidation.exceptions.UnprocessableEntityException;
 import com.bosonit.formacion.ej7.crudvalidation.person.domain.Person;
 import com.bosonit.formacion.ej7.crudvalidation.person.infraestructure.controller.input.PersonInputDto;
 import com.bosonit.formacion.ej7.crudvalidation.person.infraestructure.controller.output.PersonOutputDto;
@@ -24,25 +26,25 @@ public class PersonServiceImp implements PersonService{
         newPersonDto.setCreated_date(new Date());
 
         if(newPersonDto.getUser() == null)
-            throw new Exception("User field can not be null");
+            throw new UnprocessableEntityException("User field can not be null", 422);
         if(newPersonDto.getUser().length() > 10 || newPersonDto.getUser().length() < 6)
-            throw new Exception("User field length is not between 6 and 10");
+            throw new UnprocessableEntityException("User field length is not between 6 and 10", 422);
         if(newPersonDto.getPassword() == null)
-            throw new Exception("Password can not be null");
+            throw new UnprocessableEntityException("Password can not be null", 422);
         if(newPersonDto.getName() == null)
-            throw new Exception("Name can not be null");
+            throw new UnprocessableEntityException("Name can not be null", 422);
         if(newPersonDto.getCompany_email() == null)
-            throw new Exception("Company email is not null");
+            throw new UnprocessableEntityException("Company email is not null", 422);
         if(!newPersonDto.getCompany_email().contains("@"))
-            throw new Exception("Email format is not correct");
+            throw new UnprocessableEntityException("Email format is not correct", 422);
         if(newPersonDto.getPersonal_email() == null)
-            throw new Exception("Company email is not null");
+            throw new UnprocessableEntityException("Company email is not null", 422);
        if(!newPersonDto.getPersonal_email().contains("@"))
-            throw new Exception("Email format is not correct");
+            throw new UnprocessableEntityException("Email format is not correct", 422);
         if(newPersonDto.getCity() == null)
-            throw new Exception("City can not be null");
+            throw new UnprocessableEntityException("City can not be null", 422);
         if(newPersonDto.getCreated_date() == null)
-            throw new Exception("Created date can not be null");
+            throw new UnprocessableEntityException("Created date can not be null", 422);
 
         Person newPerson = newPersonDto.transformIntoPerson();
 
@@ -59,7 +61,7 @@ public class PersonServiceImp implements PersonService{
         Optional<Person> personOptional = personRepository.findById(id);
 
         if(personOptional.isEmpty())
-            throw new Exception("Person does not exist");
+            throw new EntityNotFoundException("Person does not exist", 404);
 
         return new PersonOutputDto(personOptional.get());
     }
@@ -69,7 +71,7 @@ public class PersonServiceImp implements PersonService{
        List<Person> peopleList = personRepository.findByUsername(username);
 
        if(peopleList.isEmpty())
-           throw new Exception("Person does not exist");
+           throw new EntityNotFoundException("Person does not exist", 404);
 
        return peopleList.stream().map(person -> new PersonOutputDto(person)).collect(Collectors.toList());
 
@@ -95,7 +97,27 @@ public class PersonServiceImp implements PersonService{
         Optional<Person> personOpt = personRepository.findById(id);
 
         if(personOpt.isEmpty())
-            throw new Exception("The person does no exist");
+            throw new EntityNotFoundException("The person does no exist", 404);
+        if(personInputDto.getUser() == null)
+            throw new UnprocessableEntityException("User field can not be null", 422);
+        if(personInputDto.getUser().length() > 10 || personInputDto.getUser().length() < 6)
+            throw new UnprocessableEntityException("User field length is not between 6 and 10", 422);
+        if(personInputDto.getPassword() == null)
+            throw new UnprocessableEntityException("Password can not be null", 422);
+        if(personInputDto.getName() == null)
+            throw new UnprocessableEntityException("Name can not be null", 422);
+        if(personInputDto.getCompany_email() == null)
+            throw new UnprocessableEntityException("Company email is not null", 422);
+        if(!personInputDto.getCompany_email().contains("@"))
+            throw new UnprocessableEntityException("Email format is not correct", 422);
+        if(personInputDto.getPersonal_email() == null)
+            throw new UnprocessableEntityException("Company email is not null", 422);
+        if(!personInputDto.getPersonal_email().contains("@"))
+            throw new UnprocessableEntityException("Email format is not correct", 422);
+        if(personInputDto.getCity() == null)
+            throw new UnprocessableEntityException("City can not be null", 422);
+        if(personInputDto.getCreated_date() == null)
+            throw new UnprocessableEntityException("Created date can not be null", 422);
 
         Person person = personOpt.get();
 
@@ -120,7 +142,7 @@ public class PersonServiceImp implements PersonService{
         Optional<Person> personOpt = personRepository.findById(id);
 
         if(personOpt.isEmpty())
-            throw new Exception("The person does no exist");
+            throw new EntityNotFoundException("The person does no exist", 404);
 
         personRepository.delete(personOpt.get());
 
