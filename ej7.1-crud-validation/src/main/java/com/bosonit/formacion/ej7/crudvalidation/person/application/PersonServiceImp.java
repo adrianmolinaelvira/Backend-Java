@@ -65,13 +65,13 @@ public class PersonServiceImp implements PersonService{
     }
 
     @Override
-    public PersonOutputDto findPersonByUsername(String username) throws Exception {
-       Optional<Person> personOptional = personRepository.findByUsername(username);
+    public List<PersonOutputDto> findPersonByUsername(String username) throws Exception {
+       List<Person> peopleList = personRepository.findByUsername(username);
 
-       if(personOptional.isEmpty())
+       if(peopleList.isEmpty())
            throw new Exception("Person does not exist");
 
-       return new PersonOutputDto(personOptional.get());
+       return peopleList.stream().map(person -> new PersonOutputDto(person)).collect(Collectors.toList());
 
     }
 
