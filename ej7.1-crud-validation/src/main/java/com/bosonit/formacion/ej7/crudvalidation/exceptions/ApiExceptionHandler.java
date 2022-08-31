@@ -11,13 +11,13 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 public class ApiExceptionHandler {
     @ExceptionHandler(EntityNotFoundException.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
-    public String handleEntityNotFoundException(EntityNotFoundException exception) {
-        return  exception.getTimeStamp() + " - " + exception.getMessage();
+    public CustomeError handleEntityNotFoundException(EntityNotFoundException exception) {
+        return new CustomeError(exception.getMessage(), 404);
     }
 
     @ExceptionHandler(UnprocessableEntityException.class)
     @ResponseStatus(HttpStatus.UNPROCESSABLE_ENTITY)
-    public String handleUnprocessableEntityException(UnprocessableEntityException exception) {
-        return exception.getTimeStamp() + " - " + exception.getMessage();
+    public CustomeError handleUnprocessableEntityException(UnprocessableEntityException exception) {
+        return new CustomeError(exception.getMessage(), 422);
     }
 }
