@@ -1,5 +1,6 @@
 package com.bosonit.formacion.ej7.crudvalidation.person.application;
 
+import com.bosonit.formacion.ej7.crudvalidation.person.domain.Person;
 import com.bosonit.formacion.ej7.crudvalidation.person.infraestructure.controller.input.PersonInputDto;
 import com.bosonit.formacion.ej7.crudvalidation.person.infraestructure.controller.output.PersonOutputDto;
 
@@ -18,4 +19,6 @@ public interface PersonService {
     public PersonOutputDto updatePerson(int id, PersonInputDto personInputDto) throws Exception;
 
     public String deletePerson(int id) throws Exception;
+
+    public Optional<Person> getPersonOptional(int id);
 }

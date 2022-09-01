@@ -1,13 +1,11 @@
 package com.bosonit.formacion.ej7.crudvalidation.exceptions;
 
 import lombok.Data;
-import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.ResponseStatus;
 
 import java.util.Date;
 
 @Data
-public class EntityNotFoundException extends Exception{
+public class EntityNotFoundException extends RuntimeException{
 
     Date timeStamp;
     int httpCode;

@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import java.util.Date;
 
 @Data
-public class UnprocessableEntityException extends Exception{
+public class UnprocessableEntityException extends RuntimeException{
 
     Date timeStamp;
     int httpCode;

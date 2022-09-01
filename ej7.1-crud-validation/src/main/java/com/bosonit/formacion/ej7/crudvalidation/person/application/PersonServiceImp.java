@@ -148,4 +148,9 @@ public class PersonServiceImp implements PersonService{
 
         return "La persona ha sido borrada con éxito";
     }
+
+    @Override
+    public Optional<Person> getPersonOptional(int id) {
+        return personRepository.findById(id);
+    }
 }

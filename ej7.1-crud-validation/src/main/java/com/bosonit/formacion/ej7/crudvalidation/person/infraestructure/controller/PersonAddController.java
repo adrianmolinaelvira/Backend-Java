@@ -1,7 +1,7 @@
 package com.bosonit.formacion.ej7.crudvalidation.person.infraestructure.controller;
 
 import com.bosonit.formacion.ej7.crudvalidation.exceptions.UnprocessableEntityException;
-import com.bosonit.formacion.ej7.crudvalidation.person.application.PersonServiceImp;
+import com.bosonit.formacion.ej7.crudvalidation.person.application.PersonService;
 import com.bosonit.formacion.ej7.crudvalidation.person.infraestructure.controller.input.PersonInputDto;
 import com.bosonit.formacion.ej7.crudvalidation.person.infraestructure.controller.output.PersonOutputDto;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +14,7 @@ import org.springframework.web.server.ResponseStatusException;
 public class PersonAddController {
 
     @Autowired
-    PersonServiceImp personServiceImp;
+    PersonService personServiceImp;
 
     @PostMapping("/person")
     public PersonOutputDto addPerson(@RequestBody PersonInputDto personInputDto) throws Exception {

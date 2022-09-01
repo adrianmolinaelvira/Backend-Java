@@ -1,7 +1,6 @@
-package com.bosonit.formacion.ej7.crudvalidation.student.domain;
+package com.bosonit.formacion.ej7.crudvalidation.teacher.domain;
 
 import com.bosonit.formacion.ej7.crudvalidation.person.domain.Person;
-import com.bosonit.formacion.ej7.crudvalidation.teacher.domain.Teacher;
 import lombok.Data;
 import org.hibernate.annotations.GenericGenerator;
 
@@ -9,25 +8,18 @@ import javax.persistence.*;
 
 @Data
 @Entity
-public class Student {
+public class Teacher {
 
     @Id
     @GenericGenerator(name = "sequence_dep_id", strategy = "com.bosonit.formacion.ej7.crudvalidation.generators.StringIdGenerator")
     @GeneratedValue(generator = "sequence_dep_id")
-    private String id_student;
+    private String id_teacher;
 
-    @OneToOne()
+    @OneToOne
     @JoinColumn(name = "id_person")
-    private Person person;
-
-    @Column(nullable = false)
-    private Integer num_hours_week;
+    Person person;
 
     private String comments;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_teacher")
-    private Teacher teacher;
 
     @Column(nullable = false)
     private String branch;
