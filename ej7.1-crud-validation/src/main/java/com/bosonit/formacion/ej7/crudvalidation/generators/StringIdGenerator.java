@@ -1,39 +1,35 @@
 package com.bosonit.formacion.ej7.crudvalidation.generators;
 
 import org.hibernate.HibernateException;
+import org.hibernate.MappingException;
 import org.hibernate.engine.spi.SharedSessionContractImplementor;
-import org.hibernate.id.enhanced.SequenceStyleGenerator;
-import org.hibernate.internal.util.config.ConfigurationHelper;
-import org.hibernate.service.ServiceRegistry;
-import org.hibernate.type.LongType;
-import org.hibernate.type.Type;
+import org.hibernate.exception.spi.Configurable;
+import org.hibernate.id.IdentifierGenerator;
 
 import java.io.Serializable;
 import java.util.Properties;
 
-public class StringIdGenerator extends SequenceStyleGenerator {
+public class StringIdGenerator implements IdentifierGenerator, Configurable {
 
-    public static final String VALUE_PREFIX_PARAMETER = "valuePrefix";
-    public static final String VALUE_PREFIX_DEFAULT = "";
-    private String valuePrefix;
-    public static final String NUMBER_FORMAT_PARAMETER = "numberFormat";
-    public static final String NUMBER_FORMAT_DEFAULT = "%d";
-    private String numberFormat;
+    private String prefix;
 
     @Override
-    public Serializable generate(SharedSessionContractImplementor session, Object object)  throws HibernateException {
+    public Serializable generate(
+            SharedSessionContractImplementor session, Object obj)
+            throws HibernateException {
 
-        return valuePrefix + String.format(numberFormat, super.generate(session, object));
+        String query = String.format("select %s from %s",
+                session.getEntityPersister(obj.getClass().getName(), obj)
+                        .getIdentifierPropertyName(),
+                obj.getClass().getSimpleName());
 
+        long total = session.createQuery(query).list().size();
+
+        return prefix + "-" + (total + 1);
     }
 
     @Override
-    public void configure(Type type, Properties params, ServiceRegistry serviceRegistry) {
-
-        super.configure(LongType.INSTANCE, params, serviceRegistry);
-
-        valuePrefix = ConfigurationHelper.getString(VALUE_PREFIX_PARAMETER, params, VALUE_PREFIX_DEFAULT);
-
-        numberFormat = ConfigurationHelper.getString(NUMBER_FORMAT_PARAMETER, params, NUMBER_FORMAT_DEFAULT);
+    public void configure(Properties properties) throws HibernateException {
+        prefix = properties.getProperty("prefix");
     }
 }

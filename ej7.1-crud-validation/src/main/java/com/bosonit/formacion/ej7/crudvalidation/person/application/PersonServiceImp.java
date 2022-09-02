@@ -41,19 +41,16 @@ public class PersonServiceImp implements PersonService{
             throw new UnprocessableEntityException("Company email is not null", 422);
        if(!newPersonDto.getPersonal_email().contains("@"))
             throw new UnprocessableEntityException("Email format is not correct", 422);
-        if(newPersonDto.getCity() == null)
+       if(newPersonDto.getCity() == null)
             throw new UnprocessableEntityException("City can not be null", 422);
-        if(newPersonDto.getCreated_date() == null)
+       if(newPersonDto.getCreated_date() == null)
             throw new UnprocessableEntityException("Created date can not be null", 422);
 
-        Person newPerson = newPersonDto.transformIntoPerson();
+       Person newPerson = newPersonDto.transformIntoPerson();
 
-            System.out.println(newPersonDto);
-            System.out.println(newPerson);
+       personRepository.save(newPerson);
 
-            personRepository.save(newPerson);
-
-            return new PersonOutputDto(newPerson);
+       return new PersonOutputDto(newPerson);
     }
 
     @Override
@@ -116,8 +113,6 @@ public class PersonServiceImp implements PersonService{
             throw new UnprocessableEntityException("Email format is not correct", 422);
         if(personInputDto.getCity() == null)
             throw new UnprocessableEntityException("City can not be null", 422);
-        if(personInputDto.getCreated_date() == null)
-            throw new UnprocessableEntityException("Created date can not be null", 422);
 
         Person person = personOpt.get();
 

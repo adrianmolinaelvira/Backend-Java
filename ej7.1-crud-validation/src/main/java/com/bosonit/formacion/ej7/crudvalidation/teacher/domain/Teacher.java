@@ -11,8 +11,10 @@ import javax.persistence.*;
 public class Teacher {
 
     @Id
-    @GenericGenerator(name = "sequence_dep_id", strategy = "com.bosonit.formacion.ej7.crudvalidation.generators.StringIdGenerator")
-    @GeneratedValue(generator = "sequence_dep_id")
+    @GeneratedValue(generator = "teacher-seq")
+    @GenericGenerator(name = "teacher-seq",
+            parameters = @org.hibernate.annotations.Parameter(name = "prefix", value = "teacher"),
+            strategy = "com.bosonit.formacion.ej7.crudvalidation.generators.StringIdGenerator")
     private String id_teacher;
 
     @OneToOne

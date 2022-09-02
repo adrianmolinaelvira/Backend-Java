@@ -15,8 +15,10 @@ import java.util.List;
 public class StudentSubject {
 
     @Id
-    @GenericGenerator(name = "sequence_dep_id", strategy = "com.bosonit.formacion.ej7.crudvalidation.generators.StringIdGenerator")
-    @GeneratedValue(generator = "sequence_dep_id")
+    @GeneratedValue(generator = "subject-seq")
+    @GenericGenerator(name = "subject-seq",
+            parameters = @org.hibernate.annotations.Parameter(name = "prefix", value = "subject"),
+            strategy = "com.bosonit.formacion.ej7.crudvalidation.generators.StringIdGenerator")
     private String id_subject;
 
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)

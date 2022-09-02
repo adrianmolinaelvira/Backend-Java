@@ -34,8 +34,8 @@ public class StudentServiceImp implements StudentService{
             throw new UnprocessableEntityException("Person_id can not be null", 422);
         if(studentInputDto.getNum_hours_week() == null)
             throw new UnprocessableEntityException("num_hours_week can not be null", 422);
-        if(studentInputDto.getBranch() == null)
-            throw new UnprocessableEntityException("branch can not be null", 422);
+        if(!studentInputDto.getBranch().equals("Front") && !studentInputDto.getBranch().equals("Back") && !studentInputDto.getBranch().equals("FullStack"))
+            throw new UnprocessableEntityException("branch does not have a valid value", 422);
 
         //Check if person exists in personService
         Optional<Person> personOpt = personService.getPersonOptional(studentInputDto.getPerson_id());
@@ -72,7 +72,7 @@ public class StudentServiceImp implements StudentService{
             throw new UnprocessableEntityException("Person_id can not be null", 422);
         if(studentInputDto.getNum_hours_week() == null)
             throw new UnprocessableEntityException("num_hours_week can not be null", 422);
-        if(studentInputDto.getBranch() == null)
+        if(!studentInputDto.getBranch().equals("Front") && !studentInputDto.getBranch().equals("Back") && !studentInputDto.getBranch().equals("FullStack"))
             throw new UnprocessableEntityException("branch can not be null", 422);
 
         //Check if person exists in personService

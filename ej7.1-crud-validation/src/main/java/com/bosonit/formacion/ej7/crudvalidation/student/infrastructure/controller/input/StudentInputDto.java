@@ -23,6 +23,7 @@ public class StudentInputDto {
         student.setNum_hours_week(this.num_hours_week);
         student.setTeacher(teacher);
         student.setBranch(this.branch);
+        student.setComments(this.comments);
 
         return student;
     }

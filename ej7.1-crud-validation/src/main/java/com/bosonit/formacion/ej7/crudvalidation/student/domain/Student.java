@@ -4,6 +4,7 @@ import com.bosonit.formacion.ej7.crudvalidation.person.domain.Person;
 import com.bosonit.formacion.ej7.crudvalidation.teacher.domain.Teacher;
 import lombok.Data;
 import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Parameter;
 
 import javax.persistence.*;
 
@@ -12,8 +13,10 @@ import javax.persistence.*;
 public class Student {
 
     @Id
-    @GenericGenerator(name = "sequence_dep_id", strategy = "com.bosonit.formacion.ej7.crudvalidation.generators.StringIdGenerator")
-    @GeneratedValue(generator = "sequence_dep_id")
+    @GeneratedValue(generator = "student-seq")
+    @GenericGenerator(name = "student-seq",
+            parameters = @Parameter(name = "prefix", value = "student"),
+            strategy = "com.bosonit.formacion.ej7.crudvalidation.generators.StringIdGenerator")
     private String id_student;
 
     @OneToOne()

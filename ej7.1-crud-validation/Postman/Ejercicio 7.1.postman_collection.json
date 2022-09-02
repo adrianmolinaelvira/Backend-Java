@@ -7,136 +7,181 @@
 	},
 	"item": [
 		{
-			"name": "addPerson",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"name\": \"jorge\",\r\n    \"user\": \"jorge100\",\r\n    \"password\": \"12345\",\r\n    \"surname\": \"Pérez\",\r\n    \"company_email\": \"jorge@work.api\",\r\n    \"personal_email\": \"jorge@personal.api\",\r\n    \"city\": \"Guadalajara\",\r\n    \"active\": true\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
+			"name": "Person",
+			"item": [
+				{
+					"name": "addPerson",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"jorge\",\r\n    \"user\": \"jorge100\",\r\n    \"password\": \"12345\",\r\n    \"surname\": \"Pérez\",\r\n    \"company_email\": \"jorge@work.api\",\r\n    \"personal_email\": \"jorge@personal.api\",\r\n    \"city\": \"Guadalajara\",\r\n    \"active\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/person",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"person"
+							]
 						}
-					}
+					},
+					"response": []
 				},
-				"url": {
-					"raw": "localhost:8080/person",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"person"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "getAllPeople",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "localhost:8080/person/all",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"person",
-						"all"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "getPersonById",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "localhost:8080/person/7",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"person",
-						"7"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "getPersonByUsername",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "localhost:8080/person/username/jorge100",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"person",
-						"username",
-						"jorge100"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "updatePerson",
-			"request": {
-				"method": "PUT",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"name\": \"jorge\",\r\n    \"user\": \"jorge200\",\r\n    \"password\": \"54321\",\r\n    \"surname\": \"Pérez\",\r\n    \"company_email\": \"jorge@work.api\",\r\n    \"personal_email\": \"jorge@personal.api\",\r\n    \"city\": \"Cuenca\",\r\n    \"active\": true\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
+				{
+					"name": "getAllPeople",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/person/all",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"person",
+								"all"
+							]
 						}
-					}
+					},
+					"response": []
 				},
-				"url": {
-					"raw": "localhost:8080/person/7",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"person",
-						"7"
-					]
+				{
+					"name": "getPersonById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/person/7",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"person",
+								"7"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getPersonByUsername",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/person/username/jorge100",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"person",
+								"username",
+								"jorge100"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updatePerson",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"jorge\",\r\n    \"user\": \"jorge200\",\r\n    \"password\": \"54321\",\r\n    \"surname\": \"Pérez\",\r\n    \"company_email\": \"jorge@work.api\",\r\n    \"personal_email\": \"jorge@personal.api\",\r\n    \"city\": \"Cuenca\",\r\n    \"active\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/person/7",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"person",
+								"7"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deletePerson",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/person/7",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"person",
+								"7"
+							]
+						}
+					},
+					"response": []
 				}
-			},
-			"response": []
+			]
 		},
 		{
-			"name": "deletePerson",
-			"request": {
-				"method": "DELETE",
-				"header": [],
-				"url": {
-					"raw": "localhost:8080/person/7",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"person",
-						"7"
-					]
+			"name": "Student",
+			"item": [
+				{
+					"name": "addStudent",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"person_id\": 11,\r\n    \"num_hours_week\": 30,\r\n    \"comments\": \"prácticas\",\r\n    \"branch\": \"Back\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/student",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"student"
+							]
+						}
+					},
+					"response": []
 				}
-			},
-			"response": []
+			]
+		},
+		{
+			"name": "Teacher",
+			"item": []
+		},
+		{
+			"name": "Student_Subject",
+			"item": []
 		}
 	]
 }
