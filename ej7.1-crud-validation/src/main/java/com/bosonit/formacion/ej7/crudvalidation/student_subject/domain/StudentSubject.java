@@ -15,9 +15,9 @@ import java.util.List;
 public class StudentSubject {
 
     @Id
-    @GeneratedValue(generator = "subject-seq")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "subject-seq")
     @GenericGenerator(name = "subject-seq",
-            parameters = @org.hibernate.annotations.Parameter(name = "prefix", value = "subject"),
+            parameters = @org.hibernate.annotations.Parameter(name = "StringIdGenerator.prefix", value = "subject"),
             strategy = "com.bosonit.formacion.ej7.crudvalidation.generators.StringIdGenerator")
     private String id_subject;
 

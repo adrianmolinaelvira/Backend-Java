@@ -11,9 +11,9 @@ import javax.persistence.*;
 public class Teacher {
 
     @Id
-    @GeneratedValue(generator = "teacher-seq")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "teacher-seq")
     @GenericGenerator(name = "teacher-seq",
-            parameters = @org.hibernate.annotations.Parameter(name = "prefix", value = "teacher"),
+            parameters = @org.hibernate.annotations.Parameter(name = "StringIdGenerator.prefix", value = "teacher"),
             strategy = "com.bosonit.formacion.ej7.crudvalidation.generators.StringIdGenerator")
     private String id_teacher;
 

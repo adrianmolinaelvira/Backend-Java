@@ -13,9 +13,9 @@ import javax.persistence.*;
 public class Student {
 
     @Id
-    @GeneratedValue(generator = "student-seq")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "student-seq")
     @GenericGenerator(name = "student-seq",
-            parameters = @Parameter(name = "prefix", value = "student"),
+            parameters = @Parameter(name = "StringIdGenerator.prefix", value = "student"),
             strategy = "com.bosonit.formacion.ej7.crudvalidation.generators.StringIdGenerator")
     private String id_student;
 
