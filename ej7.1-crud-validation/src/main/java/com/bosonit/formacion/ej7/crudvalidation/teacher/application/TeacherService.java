@@ -11,7 +11,7 @@ public interface TeacherService {
 
     TeacherOutputDto addTeacher(TeacherInputDto teacherInputDto);
 
-    TeacherOutputDto updateTeacher(TeacherInputDto teacherInputDto);
+    TeacherOutputDto updateTeacher(String id, TeacherInputDto teacherInputDto);
 
     TeacherOutputDto findTeacherById(String id);
 
