@@ -5,8 +5,6 @@ import com.bosonit.formacion.ej7.crudvalidation.student.domain.Student;
 import com.bosonit.formacion.ej7.crudvalidation.teacher.domain.Teacher;
 import lombok.Data;
 
-import javax.persistence.*;
-
 @Data
 public class StudentInputDto {
 

@@ -122,4 +122,9 @@ public class StudentServiceImp implements StudentService{
     public Optional<Student> getStudentOptional(String id) {
         return studentRepository.findById(id);
     }
+
+    @Override
+    public Optional<Student> getStudentOptionalByPerson(Person person) {
+        return studentRepository.findByPerson(person);
+    }
 }

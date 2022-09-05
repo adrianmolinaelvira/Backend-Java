@@ -1,12 +1,14 @@
 package com.bosonit.formacion.ej7.crudvalidation.student.domain;
 
 import com.bosonit.formacion.ej7.crudvalidation.person.domain.Person;
+import com.bosonit.formacion.ej7.crudvalidation.student_subject.domain.StudentSubject;
 import com.bosonit.formacion.ej7.crudvalidation.teacher.domain.Teacher;
 import lombok.Data;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Parameter;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Data
 @Entity
@@ -33,4 +35,7 @@ public class Student {
 
     @Column(nullable = false)
     private String branch;
+
+    @ManyToMany(mappedBy = "students")
+    List<StudentSubject> studentSubjects;
 }
