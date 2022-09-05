@@ -153,7 +153,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"person_id\": 11,\r\n    \"num_hours_week\": 30,\r\n    \"comments\": \"prácticas\",\r\n    \"branch\": \"Back\"\r\n}",
+							"raw": "{\r\n    \"person_id\": 1,\r\n    \"num_hours_week\": 30,\r\n    \"comments\": \"prácticas\",\r\n    \"branch\": \"Back\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -168,6 +168,78 @@
 							"port": "8080",
 							"path": [
 								"student"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getStudent",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/student/student-1?outputType=full",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"student",
+								"student-1"
+							],
+							"query": [
+								{
+									"key": "outputType",
+									"value": "full"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateStudent",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"person_id\": 1,\r\n    \"num_hours_week\": 50,\r\n    \"comments\": \"prácticas\",\r\n    \"branch\": \"Back\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/student/student-1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"student",
+								"student-1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteStudent",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/student/student-1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"student",
+								"student-1"
 							]
 						}
 					},
