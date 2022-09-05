@@ -13,9 +13,12 @@ public class FindStudentController {
     StudentService studentService;
 
     @GetMapping("/{id}")
-    public StudentOutputDto getStudent(@PathVariable String id, @RequestParam String outputType){
+    public StudentOutputDto getStudent(@PathVariable String id, @RequestParam(required = false) String outputType){
 
         StudentOutputDto studentOutputDto = studentService.findStudentById(id);
+
+        if(outputType == null)
+            outputType = "simple";
 
         if(outputType.equals("full"))
             return studentOutputDto;

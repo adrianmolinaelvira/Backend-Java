@@ -85,8 +85,10 @@ public class StudentServiceImp implements StudentService{
         Optional<Teacher> teacherOpt = teacherService.getTeacherOptionalByPerson(personOpt.get());
         Optional<Student> studentOpt = studentRepository.findByPerson(personOpt.get());
 
-        if(teacherOpt.isPresent() || studentOpt.isPresent())
-            throw new UnprocessableEntityException("The person is already a student or teacher", 422);
+        if(studentInputDto.getPerson_id() != studentToUpdate.getPerson().getId_person())
+            if(teacherOpt.isPresent() || studentOpt.isPresent())
+                throw new UnprocessableEntityException("The person is already a student or teacher", 422);
+
 
         teacherOpt = teacherService.getTeacherOptional(studentInputDto.getTeacher_id());
 
