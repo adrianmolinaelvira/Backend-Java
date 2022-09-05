@@ -27,7 +27,7 @@ public class StudentOutputDto {
         setPersonOutputDto(new PersonOutputDto(student.getPerson()));
         setNum_hours_week(student.getNum_hours_week());
         setComments(student.getComments());
-        setTeacherOutputDto(new TeacherOutputDto(student.getTeacher()));
+        setTeacherOutputDto(student.getTeacher() != null ? new TeacherOutputDto(student.getTeacher()) : null);
         setBranch(student.getBranch());
     }
 }
