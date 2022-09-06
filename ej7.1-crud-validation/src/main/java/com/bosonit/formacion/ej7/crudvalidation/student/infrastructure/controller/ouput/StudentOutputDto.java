@@ -9,18 +9,18 @@ import lombok.Data;
 public class StudentOutputDto {
 
     private String id_student;
-    private PersonOutputDto personOutputDto;
+    private PersonOutputDto person;
     private int num_hours_week;
     private String comments;
-    private TeacherOutputDto teacherOutputDto;
+    private TeacherOutputDto teacher;
     private String branch;
 
     public StudentOutputDto(Student student){
         setId_student(student.getId_student());
-        setPersonOutputDto(new PersonOutputDto(student.getPerson()));
+        setPerson(new PersonOutputDto(student.getPerson()));
         setNum_hours_week(student.getNum_hours_week());
         setComments(student.getComments());
-        setTeacherOutputDto(student.getTeacher() != null ? new TeacherOutputDto(student.getTeacher()) : null);
+        setTeacher(student.getTeacher() != null ? new TeacherOutputDto(student.getTeacher()) : null);
         setBranch(student.getBranch());
     }
 }

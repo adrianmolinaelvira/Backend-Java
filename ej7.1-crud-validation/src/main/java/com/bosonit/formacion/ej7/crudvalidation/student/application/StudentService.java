@@ -4,6 +4,8 @@ import com.bosonit.formacion.ej7.crudvalidation.person.domain.Person;
 import com.bosonit.formacion.ej7.crudvalidation.student.infrastructure.controller.ouput.StudentOutputDto;
 import com.bosonit.formacion.ej7.crudvalidation.student.domain.Student;
 import com.bosonit.formacion.ej7.crudvalidation.student.infrastructure.controller.input.StudentInputDto;
+import com.bosonit.formacion.ej7.crudvalidation.student.infrastructure.controller.ouput.StudentOutputDtoWithSubjects;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.Optional;
 
@@ -20,4 +22,8 @@ public interface StudentService {
     public Optional<Student> getStudentOptional(String id);
 
     public Optional<Student> getStudentOptionalByPerson(Person person);
+
+    public StudentOutputDtoWithSubjects addSubjectToStudent(String id_student, String id_subject);
+
+    public StudentOutputDtoWithSubjects deleteSubjectFromStudent(String id_student, String id_subject);
 }

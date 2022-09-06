@@ -7,7 +7,10 @@ import com.bosonit.formacion.ej7.crudvalidation.person.domain.Person;
 import com.bosonit.formacion.ej7.crudvalidation.student.domain.Student;
 import com.bosonit.formacion.ej7.crudvalidation.student.infrastructure.controller.input.StudentInputDto;
 import com.bosonit.formacion.ej7.crudvalidation.student.infrastructure.controller.ouput.StudentOutputDto;
+import com.bosonit.formacion.ej7.crudvalidation.student.infrastructure.controller.ouput.StudentOutputDtoWithSubjects;
 import com.bosonit.formacion.ej7.crudvalidation.student.infrastructure.repository.StudentRepository;
+import com.bosonit.formacion.ej7.crudvalidation.student_subject.domain.StudentSubject;
+import com.bosonit.formacion.ej7.crudvalidation.student_subject.infrastructure.repository.StudentSubjectRepository;
 import com.bosonit.formacion.ej7.crudvalidation.teacher.application.TeacherService;
 import com.bosonit.formacion.ej7.crudvalidation.teacher.domain.Teacher;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +29,9 @@ public class StudentServiceImp implements StudentService{
 
     @Autowired
     TeacherService teacherService;
+
+    @Autowired
+    StudentSubjectRepository studentSubjectRepository;
 
     @Override
     public StudentOutputDto addStudent(StudentInputDto studentInputDto) {
@@ -126,5 +132,36 @@ public class StudentServiceImp implements StudentService{
     @Override
     public Optional<Student> getStudentOptionalByPerson(Person person) {
         return studentRepository.findByPerson(person);
+    }
+
+    @Override
+    public StudentOutputDtoWithSubjects addSubjectToStudent(String id_student, String id_subject) {
+
+        Student student = studentRepository.findById(id_student).orElseThrow(() -> new EntityNotFoundException("Student does not exist", 404));
+        StudentSubject subject = studentSubjectRepository.findById(id_subject).orElseThrow(() -> new EntityNotFoundException("Subject does not exist", 404));
+
+        if(student.getStudentSubjects().contains(subject))
+            throw new UnprocessableEntityException("The student already has this subject", 422);
+
+        student.getStudentSubjects().add(subject);
+
+        studentRepository.save(student);
+
+        return new StudentOutputDtoWithSubjects(student);
+    }
+
+    @Override
+    public StudentOutputDtoWithSubjects deleteSubjectFromStudent(String id_student, String id_subject) {
+        Student student = studentRepository.findById(id_student).orElseThrow(() -> new EntityNotFoundException("Student does not exist", 404));
+        StudentSubject subject = studentSubjectRepository.findById(id_subject).orElseThrow(() -> new EntityNotFoundException("Subject does not exist", 404));
+
+        if(!student.getStudentSubjects().contains(subject))
+            throw new UnprocessableEntityException("The student didn't have this subject", 422);
+
+        student.getStudentSubjects().remove(subject);
+
+        studentRepository.save(student);
+
+        return new StudentOutputDtoWithSubjects(student);
     }
 }

@@ -23,7 +23,7 @@ public class FindStudentController {
         if(outputType.equals("full"))
             return studentOutputDto;
 
-        studentOutputDto.setPersonOutputDto(null);
+        studentOutputDto.setPerson(null);
 
         return  studentOutputDto;
     }
