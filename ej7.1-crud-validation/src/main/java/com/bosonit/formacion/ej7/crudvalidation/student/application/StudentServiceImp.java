@@ -16,6 +16,7 @@ import com.bosonit.formacion.ej7.crudvalidation.teacher.domain.Teacher;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.Optional;
 
 @Service
@@ -135,6 +136,7 @@ public class StudentServiceImp implements StudentService{
     }
 
     @Override
+    @Transactional
     public StudentOutputDtoWithSubjects addSubjectToStudent(String id_student, String id_subject) {
 
         Student student = studentRepository.findById(id_student).orElseThrow(() -> new EntityNotFoundException("Student does not exist", 404));
@@ -143,24 +145,27 @@ public class StudentServiceImp implements StudentService{
         if(student.getStudentSubjects().contains(subject))
             throw new UnprocessableEntityException("The student already has this subject", 422);
 
-        student.getStudentSubjects().add(subject);
+        subject.getStudents().add(student);
+        student.getStudentSubjects().add(subject); //Sin efecto en la base de datos
 
-        studentRepository.save(student);
+        studentSubjectRepository.save(subject);
 
         return new StudentOutputDtoWithSubjects(student);
     }
 
     @Override
+    @Transactional
     public StudentOutputDtoWithSubjects deleteSubjectFromStudent(String id_student, String id_subject) {
         Student student = studentRepository.findById(id_student).orElseThrow(() -> new EntityNotFoundException("Student does not exist", 404));
         StudentSubject subject = studentSubjectRepository.findById(id_subject).orElseThrow(() -> new EntityNotFoundException("Subject does not exist", 404));
 
         if(!student.getStudentSubjects().contains(subject))
-            throw new UnprocessableEntityException("The student didn't have this subject", 422);
+            throw new UnprocessableEntityException("The student don't have this subject", 422);
 
-        student.getStudentSubjects().remove(subject);
+        subject.getStudents().remove(student);
+        student.getStudentSubjects().remove(subject); //Sin efecto en la base de datos
 
-        studentRepository.save(student);
+        studentSubjectRepository.save(subject);
 
         return new StudentOutputDtoWithSubjects(student);
     }

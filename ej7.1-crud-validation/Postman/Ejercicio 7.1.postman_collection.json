@@ -109,14 +109,14 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8080/person/7",
+							"raw": "localhost:8080/person/9",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
 								"person",
-								"7"
+								"9"
 							]
 						}
 					},
@@ -244,16 +244,244 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "addSubjectToStudent",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/student/student-1/studentsubject-1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"student",
+								"student-1",
+								"studentsubject-1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteSubjectFromStudent",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/student/student-1/studentsubject-1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"student",
+								"student-1",
+								"studentsubject-1"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
 		{
 			"name": "Teacher",
-			"item": []
+			"item": [
+				{
+					"name": "addTeacher",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id_person\": 2,\r\n    \"comments\": \"profesor\",\r\n    \"branch\": \"Front\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/teacher",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"teacher"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateTeacher",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id_person\": 2,\r\n    \"comments\": \"profesor\",\r\n    \"branch\": \"Back\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/teacher/",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"teacher",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getTeacher",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/teacher/teacher-1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"teacher",
+								"teacher-1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteTeacher",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/teacher/teacher-1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"teacher",
+								"teacher-1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		},
 		{
 			"name": "Student_Subject",
-			"item": []
+			"item": [
+				{
+					"name": "addSubject",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id_teacher\": \"teacher-1\",\r\n    \"subject\": \"matemáticas\",\r\n    \"comments\": \"Asignatura\",\r\n    \"initial_date\": \"2022-10-14\",\r\n    \"finish_date\": \"2023-06-24\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/subject",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"subject"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateSubject",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id_teacher\": \"teacher-1\",\r\n    \"subject\": \"matemáticas\",\r\n    \"comments\": \"Asignatura\",\r\n    \"initial_date\": \"2022-10-14\",\r\n    \"finish_date\": \"2023-06-24\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/subject/studentsubject-1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"subject",
+								"studentsubject-1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getSubjectById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/subject/studentsubject-1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"subject",
+								"studentsubject-1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteSubject",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/subject/studentsubject-1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"subject",
+								"studentsubject-1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		}
 	]
 }

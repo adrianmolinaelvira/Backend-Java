@@ -6,6 +6,11 @@ import com.bosonit.formacion.ej7.crudvalidation.person.domain.Person;
 import com.bosonit.formacion.ej7.crudvalidation.person.infraestructure.controller.input.PersonInputDto;
 import com.bosonit.formacion.ej7.crudvalidation.person.infraestructure.controller.output.PersonOutputDto;
 import com.bosonit.formacion.ej7.crudvalidation.person.infraestructure.repository.PersonRepository;
+import com.bosonit.formacion.ej7.crudvalidation.student.domain.Student;
+import com.bosonit.formacion.ej7.crudvalidation.student.infrastructure.repository.StudentRepository;
+import com.bosonit.formacion.ej7.crudvalidation.student_subject.infrastructure.repository.StudentSubjectRepository;
+import com.bosonit.formacion.ej7.crudvalidation.teacher.domain.Teacher;
+import com.bosonit.formacion.ej7.crudvalidation.teacher.infrastructure.repository.TeacherRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,6 +25,15 @@ public class PersonServiceImp implements PersonService{
 
     @Autowired
     PersonRepository personRepository;
+
+    @Autowired
+    StudentRepository studentRepository;
+
+    @Autowired
+    TeacherRepository teacherRepository;
+
+    @Autowired
+    StudentSubjectRepository studentSubjectRepository;
 
     @Override
     public PersonOutputDto addPerson(PersonInputDto newPersonDto) throws Exception {
@@ -138,6 +152,14 @@ public class PersonServiceImp implements PersonService{
 
         if(personOpt.isEmpty())
             throw new EntityNotFoundException("The person does no exist", 404);
+
+        Optional<Student> studentOptional = studentRepository.findByPerson(personOpt.get());
+        Optional<Teacher> teacherOptional = teacherRepository.findByPerson(personOpt.get());
+
+        if(teacherOptional.isPresent())
+            throw new UnprocessableEntityException("The person is a teacher", 422);
+        if(studentOptional.isPresent())
+            throw new UnprocessableEntityException("The person is a student", 422);
 
         personRepository.delete(personOpt.get());
 
