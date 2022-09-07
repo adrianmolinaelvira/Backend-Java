@@ -2,11 +2,11 @@ package com.bosonit.formacion.ej7.crudvalidation.student.infrastructure.controll
 
 import com.bosonit.formacion.ej7.crudvalidation.student.application.StudentService;
 import com.bosonit.formacion.ej7.crudvalidation.student.infrastructure.controller.ouput.StudentOutputDtoWithSubjects;
+import com.bosonit.formacion.ej7.crudvalidation.student_subject.infrastructure.controller.input.StudentSubjectInputDto;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 public class StudentSubjectsController {
@@ -14,13 +14,13 @@ public class StudentSubjectsController {
     @Autowired
     StudentService studentService;
 
-    @PutMapping("/student/{id_student}/{id_subject}")
-    public StudentOutputDtoWithSubjects addSubjectToStudent(@PathVariable String id_student, @PathVariable String id_subject){
-        return studentService.addSubjectToStudent(id_student, id_subject);
+    @PutMapping("/student/{id_student}/subjects")
+    public String addSubjectToStudent(@PathVariable String id_student, @RequestBody List<String> subjectsIds){
+        return studentService.addSubjectToStudent(id_student, subjectsIds);
     }
 
-    @DeleteMapping("/student/{id_student}/{id_subject}")
-    public StudentOutputDtoWithSubjects deleteSubjectFromStudent(@PathVariable String id_student, @PathVariable String id_subject){
-        return studentService.deleteSubjectFromStudent(id_student, id_subject);
+    @DeleteMapping("/student/{id_student}/subjects")
+    public String deleteSubjectFromStudent(@PathVariable String id_student, @RequestBody List<String> subjectsIds){
+        return studentService.deleteSubjectFromStudent(id_student, subjectsIds);
     }
 }

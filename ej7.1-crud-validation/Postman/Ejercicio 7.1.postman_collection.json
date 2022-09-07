@@ -250,8 +250,17 @@
 					"request": {
 						"method": "PUT",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": " [\"studentsubject-1\"]\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
-							"raw": "localhost:8080/student/student-1/studentsubject-1",
+							"raw": "localhost:8080/student/student-1/subjects",
 							"host": [
 								"localhost"
 							],
@@ -259,7 +268,7 @@
 							"path": [
 								"student",
 								"student-1",
-								"studentsubject-1"
+								"subjects"
 							]
 						}
 					},
@@ -270,8 +279,17 @@
 					"request": {
 						"method": "DELETE",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\"studentsubject-1\"]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
-							"raw": "localhost:8080/student/student-1/studentsubject-1",
+							"raw": "localhost:8080/student/student-1/subjects",
 							"host": [
 								"localhost"
 							],
@@ -279,7 +297,7 @@
 							"path": [
 								"student",
 								"student-1",
-								"studentsubject-1"
+								"subjects"
 							]
 						}
 					},
@@ -358,6 +376,26 @@
 							"port": "8080",
 							"path": [
 								"teacher",
+								"teacher-1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getTeacherWithFeing",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/teacher/feign/teacher-1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"teacher",
+								"feign",
 								"teacher-1"
 							]
 						}

@@ -10,6 +10,7 @@ import com.bosonit.formacion.ej7.crudvalidation.student.infrastructure.controlle
 import com.bosonit.formacion.ej7.crudvalidation.student.infrastructure.controller.ouput.StudentOutputDtoWithSubjects;
 import com.bosonit.formacion.ej7.crudvalidation.student.infrastructure.repository.StudentRepository;
 import com.bosonit.formacion.ej7.crudvalidation.student_subject.domain.StudentSubject;
+import com.bosonit.formacion.ej7.crudvalidation.student_subject.infrastructure.controller.input.StudentSubjectInputDto;
 import com.bosonit.formacion.ej7.crudvalidation.student_subject.infrastructure.repository.StudentSubjectRepository;
 import com.bosonit.formacion.ej7.crudvalidation.teacher.application.TeacherService;
 import com.bosonit.formacion.ej7.crudvalidation.teacher.domain.Teacher;
@@ -17,6 +18,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -137,36 +139,39 @@ public class StudentServiceImp implements StudentService{
 
     @Override
     @Transactional
-    public StudentOutputDtoWithSubjects addSubjectToStudent(String id_student, String id_subject) {
+    public String addSubjectToStudent(String id_student, List<String> subjectsIds) {
 
         Student student = studentRepository.findById(id_student).orElseThrow(() -> new EntityNotFoundException("Student does not exist", 404));
-        StudentSubject subject = studentSubjectRepository.findById(id_subject).orElseThrow(() -> new EntityNotFoundException("Subject does not exist", 404));
 
-        if(student.getStudentSubjects().contains(subject))
-            throw new UnprocessableEntityException("The student already has this subject", 422);
+        for(String subjectId : subjectsIds){
+            StudentSubject subject = studentSubjectRepository.findById(subjectId).orElseThrow(() -> new EntityNotFoundException("Subject " + subjectId +  " does not exist", 404));
 
-        subject.getStudents().add(student);
-        student.getStudentSubjects().add(subject); //Sin efecto en la base de datos
+            if(subject.getStudents().contains(student))
+                throw new UnprocessableEntityException("The student already has this subject: " + subjectId, 422);
 
-        studentSubjectRepository.save(subject);
+            subject.getStudents().add(student);
 
-        return new StudentOutputDtoWithSubjects(student);
+            studentSubjectRepository.save(subject);
+        }
+        return "Las asignaturas han sido añadidas";
     }
 
     @Override
     @Transactional
-    public StudentOutputDtoWithSubjects deleteSubjectFromStudent(String id_student, String id_subject) {
+    public String deleteSubjectFromStudent(String id_student, List<String> subjectsIds) {
         Student student = studentRepository.findById(id_student).orElseThrow(() -> new EntityNotFoundException("Student does not exist", 404));
-        StudentSubject subject = studentSubjectRepository.findById(id_subject).orElseThrow(() -> new EntityNotFoundException("Subject does not exist", 404));
 
-        if(!student.getStudentSubjects().contains(subject))
-            throw new UnprocessableEntityException("The student don't have this subject", 422);
+        for(String subjectId : subjectsIds){
+            StudentSubject subject = studentSubjectRepository.findById(subjectId).orElseThrow(() -> new EntityNotFoundException("Subject " + subjectId +  " does not exist", 404));
 
-        subject.getStudents().remove(student);
-        student.getStudentSubjects().remove(subject); //Sin efecto en la base de datos
+            if(!subject.getStudents().contains(student))
+                throw new UnprocessableEntityException("The student doesn't have this subject: " + subjectId, 422);
 
-        studentSubjectRepository.save(subject);
+            subject.getStudents().remove(student);
 
-        return new StudentOutputDtoWithSubjects(student);
+            studentSubjectRepository.save(subject);
+        }
+
+        return "Las asignaturas han sido borradas";
     }
 }

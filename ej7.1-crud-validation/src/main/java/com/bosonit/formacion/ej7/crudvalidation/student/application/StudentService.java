@@ -5,8 +5,10 @@ import com.bosonit.formacion.ej7.crudvalidation.student.infrastructure.controlle
 import com.bosonit.formacion.ej7.crudvalidation.student.domain.Student;
 import com.bosonit.formacion.ej7.crudvalidation.student.infrastructure.controller.input.StudentInputDto;
 import com.bosonit.formacion.ej7.crudvalidation.student.infrastructure.controller.ouput.StudentOutputDtoWithSubjects;
+import com.bosonit.formacion.ej7.crudvalidation.student_subject.infrastructure.controller.input.StudentSubjectInputDto;
 import org.springframework.web.bind.annotation.PathVariable;
 
+import java.util.List;
 import java.util.Optional;
 
 public interface StudentService {
@@ -23,7 +25,7 @@ public interface StudentService {
 
     public Optional<Student> getStudentOptionalByPerson(Person person);
 
-    public StudentOutputDtoWithSubjects addSubjectToStudent(String id_student, String id_subject);
+    public String addSubjectToStudent(String id_student, List<String> subjectsIds);
 
-    public StudentOutputDtoWithSubjects deleteSubjectFromStudent(String id_student, String id_subject);
+    public String deleteSubjectFromStudent(String id_student, List<String> subjectsIds);
 }
