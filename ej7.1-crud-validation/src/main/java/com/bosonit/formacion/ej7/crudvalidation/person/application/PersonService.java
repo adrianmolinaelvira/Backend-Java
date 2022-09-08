@@ -3,6 +3,7 @@ package com.bosonit.formacion.ej7.crudvalidation.person.application;
 import com.bosonit.formacion.ej7.crudvalidation.person.domain.Person;
 import com.bosonit.formacion.ej7.crudvalidation.person.infraestructure.controller.input.PersonInputDto;
 import com.bosonit.formacion.ej7.crudvalidation.person.infraestructure.controller.output.PersonOutputDto;
+import com.bosonit.formacion.ej7.crudvalidation.person.infraestructure.controller.output.PersonOutputDtoWithRoleDetails;
 
 import java.util.List;
 import java.util.Optional;
@@ -10,7 +11,7 @@ import java.util.Optional;
 public interface PersonService {
     public PersonOutputDto addPerson(PersonInputDto newPersonDto) throws Exception;
 
-    public PersonOutputDto findPersonById(int id) throws Exception;
+    public PersonOutputDtoWithRoleDetails findPersonById(int id) throws Exception;
 
     public List<PersonOutputDto> findPersonByUsername(String Name) throws Exception;
 

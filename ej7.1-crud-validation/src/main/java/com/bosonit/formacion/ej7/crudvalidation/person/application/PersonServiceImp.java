@@ -5,9 +5,11 @@ import com.bosonit.formacion.ej7.crudvalidation.exceptions.UnprocessableEntityEx
 import com.bosonit.formacion.ej7.crudvalidation.person.domain.Person;
 import com.bosonit.formacion.ej7.crudvalidation.person.infraestructure.controller.input.PersonInputDto;
 import com.bosonit.formacion.ej7.crudvalidation.person.infraestructure.controller.output.PersonOutputDto;
+import com.bosonit.formacion.ej7.crudvalidation.person.infraestructure.controller.output.PersonOutputDtoWithRoleDetails;
 import com.bosonit.formacion.ej7.crudvalidation.person.infraestructure.repository.PersonRepository;
 import com.bosonit.formacion.ej7.crudvalidation.student.domain.Student;
 import com.bosonit.formacion.ej7.crudvalidation.student.infrastructure.repository.StudentRepository;
+import com.bosonit.formacion.ej7.crudvalidation.student_subject.domain.StudentSubject;
 import com.bosonit.formacion.ej7.crudvalidation.student_subject.infrastructure.repository.StudentSubjectRepository;
 import com.bosonit.formacion.ej7.crudvalidation.teacher.domain.Teacher;
 import com.bosonit.formacion.ej7.crudvalidation.teacher.infrastructure.repository.TeacherRepository;
@@ -68,13 +70,26 @@ public class PersonServiceImp implements PersonService{
     }
 
     @Override
-    public PersonOutputDto findPersonById(int id) throws Exception {
+    public PersonOutputDtoWithRoleDetails findPersonById(int id) throws Exception {
         Optional<Person> personOptional = personRepository.findById(id);
 
         if(personOptional.isEmpty())
             throw new EntityNotFoundException("Person does not exist", 404);
 
-        return new PersonOutputDto(personOptional.get());
+        Optional<Teacher> teacherOpt = teacherRepository.findByPerson(personOptional.get());
+        Optional<Student> studentOpt = studentRepository.findByPerson(personOptional.get());
+        List<Student> studentList = new ArrayList<>();
+
+        if(teacherOpt.isPresent()){
+            List<StudentSubject> subjectsList = studentSubjectRepository.findByTeacher(teacherOpt.get());
+
+            for(StudentSubject subject : subjectsList)
+                for(Student student : subject.getStudents())
+                    if(!studentList.contains(student))
+                        studentList.add(student);
+        }
+
+        return new PersonOutputDtoWithRoleDetails(personOptional.get(), teacherOpt.orElse(null), studentList, studentOpt.orElse(null));
     }
 
     @Override
@@ -83,6 +98,7 @@ public class PersonServiceImp implements PersonService{
 
        if(peopleList.isEmpty())
            throw new EntityNotFoundException("Person does not exist", 404);
+
 
        return peopleList.stream().map(person -> new PersonOutputDto(person)).collect(Collectors.toList());
 
