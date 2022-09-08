@@ -388,11 +388,11 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:8081/teacher/feign/teacher-1",
+							"raw": "localhost:8080/teacher/feign/teacher-1",
 							"host": [
 								"localhost"
 							],
-							"port": "8081",
+							"port": "8080",
 							"path": [
 								"teacher",
 								"feign",
