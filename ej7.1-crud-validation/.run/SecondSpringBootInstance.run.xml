@@ -1,7 +1,8 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="SpringBoot" type="Application" factoryName="Application">
+  <configuration default="false" name="SecondSpringBootInstance" type="Application" factoryName="Application">
     <envs>
-      <env name="server.port" value="8081" />
+      <env name="server.port" value="8080" />
+      <env name="spring.datasource.url" value="jdbc:h2:file:~/test2" />
     </envs>
     <option name="MAIN_CLASS_NAME" value="com.bosonit.formacion.ej7.crudvalidation.Application" />
     <module name="ej7.1-crud-validation" />

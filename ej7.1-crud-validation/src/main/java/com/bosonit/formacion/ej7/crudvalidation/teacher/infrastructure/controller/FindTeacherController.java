@@ -2,6 +2,7 @@ package com.bosonit.formacion.ej7.crudvalidation.teacher.infrastructure.controll
 
 import com.bosonit.formacion.ej7.crudvalidation.teacher.application.TeacherService;
 import com.bosonit.formacion.ej7.crudvalidation.teacher.domain.Teacher;
+import com.bosonit.formacion.ej7.crudvalidation.teacher.infrastructure.controller.feign.TeacherFeign;
 import com.bosonit.formacion.ej7.crudvalidation.teacher.infrastructure.controller.ouput.TeacherOutputDto;
 import feign.Feign;
 import feign.Logger;
@@ -32,12 +33,14 @@ public class FindTeacherController {
     @GetMapping("/feign/{id}")
     public TeacherOutputDto findTeacherByIdWithFeign(@PathVariable String id) throws IOException {
 
-        return new TeacherOutputDto(Feign.builder()
+        TeacherFeign teacherFeign = Feign.builder()
                 .client(new OkHttpClient())
                 .encoder(new GsonEncoder())
                 .decoder(new GsonDecoder())
                 .logger(new Slf4jLogger(Teacher.class))
                 .logLevel(Logger.Level.FULL)
-                .target(Teacher.class, "http://localhost:8081/teacher/" + id));
+                .target(TeacherFeign.class, "http://localhost:8081");
+
+        return teacherFeign.findById(id);
     }
 }
