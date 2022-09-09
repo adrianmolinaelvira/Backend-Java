@@ -1,0 +1,12 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="local" type="Application" factoryName="Application">
+    <envs>
+      <env name="spring.profiles.active" value="local" />
+    </envs>
+    <option name="MAIN_CLASS_NAME" value="com.bosonit.formacion.ej5.profiles20.Application" />
+    <module name="ej5.6-profiles2.0" />
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>
