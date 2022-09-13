@@ -7,7 +7,7 @@ import java.util.Date;
 @Data
 public class PersonInputDto {
 
-    private String user;
+    private String usuario;
     private String password;
     private String name;
     private String surname;
@@ -21,7 +21,7 @@ public class PersonInputDto {
 
     public Person transformIntoPerson(){
         Person person = new Person();
-        person.setUsername(this.user);
+        person.setUsername(this.usuario);
         person.setPassword(this.password);
         person.setName(this.name);
         person.setSurname(this.surname);
