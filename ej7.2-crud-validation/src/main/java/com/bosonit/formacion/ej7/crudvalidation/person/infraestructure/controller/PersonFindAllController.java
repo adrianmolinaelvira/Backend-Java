@@ -15,7 +15,7 @@ public class PersonFindAllController {
     @Autowired
     PersonService personServiceImp;
 
-    @GetMapping("/person/all")
+    @GetMapping("/getall")
     @CrossOrigin
     public List<PersonOutputDto> getAllPeople(){
         return personServiceImp.getAllPeople();

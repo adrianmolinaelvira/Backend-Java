@@ -15,7 +15,7 @@ public class PersonAddController {
     @Autowired
     PersonService personServiceImp;
 
-    @PostMapping("/person")
+    @PostMapping("/addperson")
     @CrossOrigin
     public PersonOutputDto addPerson(@RequestBody PersonInputDto personInputDto) throws Exception {
             return personServiceImp.addPerson(personInputDto);

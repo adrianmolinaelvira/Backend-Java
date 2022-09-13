@@ -16,7 +16,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"Jorge\",\r\n    \"user\": \"jorge14\",\r\n    \"password\": \"12345\",\r\n    \"surname\": \"Pérez\",\r\n    \"company_email\": \"jorge@work.api\",\r\n    \"personal_email\": \"jorge@personal.api\",\r\n    \"city\": \"Cuenca\",\r\n    \"active\": true\r\n}",
+							"raw": "{\r\n    \"name\": \"Jorge\",\r\n    \"usuario\": \"jorge14\",\r\n    \"password\": \"12345\",\r\n    \"surname\": \"Pérez\",\r\n    \"company_email\": \"jorge@work.api\",\r\n    \"personal_email\": \"jorge@personal.api\",\r\n    \"city\": \"Cuenca\",\r\n    \"active\": true\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -24,13 +24,13 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8081/person",
+							"raw": "localhost:8080/addperson",
 							"host": [
 								"localhost"
 							],
-							"port": "8081",
+							"port": "8080",
 							"path": [
-								"person"
+								"addperson"
 							]
 						}
 					},
@@ -42,14 +42,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:8081/person/all",
+							"raw": "localhost:8080/getall",
 							"host": [
 								"localhost"
 							],
-							"port": "8081",
+							"port": "8080",
 							"path": [
-								"person",
-								"all"
+								"getall"
 							]
 						}
 					},
@@ -61,14 +60,14 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:8081/person/5",
+							"raw": "localhost:8080/person/2",
 							"host": [
 								"localhost"
 							],
-							"port": "8081",
+							"port": "8080",
 							"path": [
 								"person",
-								"5"
+								"2"
 							]
 						}
 					},
@@ -80,11 +79,11 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:8081/person/username/jorge200",
+							"raw": "localhost:8080/person/username/jorge200",
 							"host": [
 								"localhost"
 							],
-							"port": "8081",
+							"port": "8080",
 							"path": [
 								"person",
 								"username",
@@ -109,11 +108,11 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8081/person/9",
+							"raw": "localhost:8080/person/9",
 							"host": [
 								"localhost"
 							],
-							"port": "8081",
+							"port": "8080",
 							"path": [
 								"person",
 								"9"
@@ -161,11 +160,11 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8081/student",
+							"raw": "localhost:8080/student",
 							"host": [
 								"localhost"
 							],
-							"port": "8081",
+							"port": "8080",
 							"path": [
 								"student"
 							]
@@ -179,11 +178,11 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:8081/student/student-1?outputType=full",
+							"raw": "localhost:8080/student/student-1?outputType=full",
 							"host": [
 								"localhost"
 							],
-							"port": "8081",
+							"port": "8080",
 							"path": [
 								"student",
 								"student-1"
@@ -213,11 +212,11 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8081/student/student-1",
+							"raw": "localhost:8080/student/student-1",
 							"host": [
 								"localhost"
 							],
-							"port": "8081",
+							"port": "8080",
 							"path": [
 								"student",
 								"student-1"
@@ -232,11 +231,11 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "localhost:8081/student/student-1",
+							"raw": "localhost:8080/student/student-1",
 							"host": [
 								"localhost"
 							],
-							"port": "8081",
+							"port": "8080",
 							"path": [
 								"student",
 								"student-1"
@@ -260,11 +259,11 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8081/student/student-1/subjects",
+							"raw": "localhost:8080/student/student-1/subjects",
 							"host": [
 								"localhost"
 							],
-							"port": "8081",
+							"port": "8080",
 							"path": [
 								"student",
 								"student-1",
@@ -289,11 +288,11 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8081/student/student-1/subjects",
+							"raw": "localhost:8080/student/student-1/subjects",
 							"host": [
 								"localhost"
 							],
-							"port": "8081",
+							"port": "8080",
 							"path": [
 								"student",
 								"student-1",
@@ -323,11 +322,11 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8081/teacher",
+							"raw": "localhost:8080/teacher",
 							"host": [
 								"localhost"
 							],
-							"port": "8081",
+							"port": "8080",
 							"path": [
 								"teacher"
 							]
@@ -350,11 +349,11 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8081/teacher/teacher-1",
+							"raw": "localhost:8080/teacher/teacher-1",
 							"host": [
 								"localhost"
 							],
-							"port": "8081",
+							"port": "8080",
 							"path": [
 								"teacher",
 								"teacher-1"
@@ -388,11 +387,11 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:8080/teacher/feign/teacher-1",
+							"raw": "localhost:8081/teacher/feign/teacher-1",
 							"host": [
 								"localhost"
 							],
-							"port": "8080",
+							"port": "8081",
 							"path": [
 								"teacher",
 								"feign",
@@ -441,11 +440,11 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8081/subject",
+							"raw": "localhost:8080/subject",
 							"host": [
 								"localhost"
 							],
-							"port": "8081",
+							"port": "8080",
 							"path": [
 								"subject"
 							]
@@ -468,11 +467,11 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8081/subject/studentsubject-1",
+							"raw": "localhost:8080/subject/studentsubject-1",
 							"host": [
 								"localhost"
 							],
-							"port": "8081",
+							"port": "8080",
 							"path": [
 								"subject",
 								"studentsubject-1"
@@ -487,11 +486,11 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:8081/subject/studentsubject-1",
+							"raw": "localhost:8080/subject/studentsubject-1",
 							"host": [
 								"localhost"
 							],
-							"port": "8081",
+							"port": "8080",
 							"path": [
 								"subject",
 								"studentsubject-1"
@@ -506,11 +505,11 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "localhost:8081/subject/studentsubject-1",
+							"raw": "localhost:8080/subject/studentsubject-1",
 							"host": [
 								"localhost"
 							],
-							"port": "8081",
+							"port": "8080",
 							"path": [
 								"subject",
 								"studentsubject-1"

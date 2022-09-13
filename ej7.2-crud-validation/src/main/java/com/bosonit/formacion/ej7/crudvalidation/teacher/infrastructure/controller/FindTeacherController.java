@@ -39,7 +39,7 @@ public class FindTeacherController {
                 .decoder(new GsonDecoder())
                 .logger(new Slf4jLogger(Teacher.class))
                 .logLevel(Logger.Level.FULL)
-                .target(TeacherFeign.class, "http://localhost:8081");
+                .target(TeacherFeign.class, "http://localhost:8080");
 
         return teacherFeign.findById(id);
     }

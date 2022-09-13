@@ -41,9 +41,9 @@ public class PersonServiceImp implements PersonService{
     public PersonOutputDto addPerson(PersonInputDto newPersonDto) throws Exception {
         newPersonDto.setCreated_date(new Date());
 
-        if(newPersonDto.getUser() == null)
+        if(newPersonDto.getUsuario() == null)
             throw new UnprocessableEntityException("User field can not be null", 422);
-        if(newPersonDto.getUser().length() > 10 || newPersonDto.getUser().length() < 6)
+        if(newPersonDto.getUsuario().length() > 10 || newPersonDto.getUsuario().length() < 6)
             throw new UnprocessableEntityException("User field length is not between 6 and 10", 422);
         if(newPersonDto.getPassword() == null)
             throw new UnprocessableEntityException("Password can not be null", 422);
@@ -125,9 +125,9 @@ public class PersonServiceImp implements PersonService{
 
         if(personOpt.isEmpty())
             throw new EntityNotFoundException("The person does no exist", 404);
-        if(personInputDto.getUser() == null)
+        if(personInputDto.getUsuario() == null)
             throw new UnprocessableEntityException("User field can not be null", 422);
-        if(personInputDto.getUser().length() > 10 || personInputDto.getUser().length() < 6)
+        if(personInputDto.getUsuario().length() > 10 || personInputDto.getUsuario().length() < 6)
             throw new UnprocessableEntityException("User field length is not between 6 and 10", 422);
         if(personInputDto.getPassword() == null)
             throw new UnprocessableEntityException("Password can not be null", 422);
@@ -146,7 +146,7 @@ public class PersonServiceImp implements PersonService{
 
         Person person = personOpt.get();
 
-        person.setUsername(personInputDto.getUser());
+        person.setUsername(personInputDto.getUsuario());
         person.setPassword(personInputDto.getPassword());
         person.setName(personInputDto.getName());
         person.setSurname(personInputDto.getSurname());

@@ -1,9 +1,7 @@
 <component name="ProjectRunConfigurationManager">
   <configuration default="false" name="SpringBoot" type="Application" factoryName="Application">
-    <option name="ALTERNATIVE_JRE_PATH" value="openjdk-18" />
-    <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
     <envs>
-      <env name="server.port" value="8081" />
+      <env name="server.port" value="8080" />
     </envs>
     <option name="MAIN_CLASS_NAME" value="com.bosonit.formacion.ej7.crudvalidation.Application" />
     <module name="ej7.2-crud-validation" />
