@@ -11,7 +11,7 @@ import java.util.List;
 @Data
 public class PersonOutputDto {
     private int person_id;
-    private String user;
+    private String usuario;
     private String name;
     private String surname;
     private String company_email;
@@ -24,7 +24,7 @@ public class PersonOutputDto {
 
     public PersonOutputDto(Person person){
         this.person_id = person.getId_person();
-        this.user = person.getUsername();
+        this.usuario = person.getUsername();
         this.name = person.getName();
         this.surname = person.getSurname();
         this.company_email = person.getCompany_email();

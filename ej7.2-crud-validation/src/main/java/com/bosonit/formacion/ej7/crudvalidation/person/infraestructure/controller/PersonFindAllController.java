@@ -3,6 +3,7 @@ package com.bosonit.formacion.ej7.crudvalidation.person.infraestructure.controll
 import com.bosonit.formacion.ej7.crudvalidation.person.application.PersonService;
 import com.bosonit.formacion.ej7.crudvalidation.person.infraestructure.controller.output.PersonOutputDto;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -15,6 +16,7 @@ public class PersonFindAllController {
     PersonService personServiceImp;
 
     @GetMapping("/person/all")
+    @CrossOrigin
     public List<PersonOutputDto> getAllPeople(){
         return personServiceImp.getAllPeople();
     }

@@ -4,6 +4,7 @@ import com.bosonit.formacion.ej7.crudvalidation.person.application.PersonService
 import com.bosonit.formacion.ej7.crudvalidation.person.infraestructure.controller.input.PersonInputDto;
 import com.bosonit.formacion.ej7.crudvalidation.person.infraestructure.controller.output.PersonOutputDto;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -15,6 +16,7 @@ public class PersonAddController {
     PersonService personServiceImp;
 
     @PostMapping("/person")
+    @CrossOrigin
     public PersonOutputDto addPerson(@RequestBody PersonInputDto personInputDto) throws Exception {
             return personServiceImp.addPerson(personInputDto);
     }
