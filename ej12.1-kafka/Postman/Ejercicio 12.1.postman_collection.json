@@ -1,0 +1,38 @@
+{
+	"info": {
+		"_postman_id": "e53125de-75dc-4e5f-885d-4b3c141dd016",
+		"name": "Ejercicio 12.1",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "22787527"
+	},
+	"item": [
+		{
+			"name": "sendMessageToTopic",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "\"Mensaje Enviado desde Postman\"",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/add/topic1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"add",
+						"topic1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
