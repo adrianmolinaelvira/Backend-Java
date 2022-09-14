@@ -1,0 +1,18 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="SpringBoot" type="Application" factoryName="Application">
+    <envs>
+      <env name="spring.profiles.active" value="app1" />
+    </envs>
+    <option name="MAIN_CLASS_NAME" value="com.bosonit.formacion.ej12.kafka.Application" />
+    <module name="ej12.1-kafka" />
+    <extension name="coverage">
+      <pattern>
+        <option name="PATTERN" value="com.bosonit.formacion.ej12.kafka.*" />
+        <option name="ENABLED" value="true" />
+      </pattern>
+    </extension>
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>
