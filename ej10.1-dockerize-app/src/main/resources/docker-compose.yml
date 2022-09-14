@@ -1,7 +1,7 @@
 version: "3.7"
 services: #Servicios, es decir, los contenedores que vamos a crear
   mispringboot: #Nombre del contenedor
-    image: library/ej10.1-dockerize-app:0.0.1-SNAPSHOT #Indicamos que este contenedor se va a construrir a traves del Dockerfile
+    image: library/ej10.1-dockerize-app:0.0.1-SNAPSHOT
     ports: #Vamos a indicar una lista de los puertos que vamos a mapear para el contenedor
       - "8080:8080" #PuertoDelHost:PuertoDelContenedor
     links: #Lista con los contenedores a los que el contenedor se va a conectar
@@ -10,6 +10,14 @@ services: #Servicios, es decir, los contenedores que vamos a crear
       - myNetwork
     environment:
       SPRING.DATASOURCE.URL: jdbc:postgresql://server:5432/test
+      SPRING.DATASOURCE.USERNAME: postgres
+      SPRING.DATASOURCE.PASSWORD: contrasena
+      HIBERNATE.DIALECT: org.hibernate.dialect.PostgreSQLDialect
+      SPRING.DATASOURCE.DRIVERCLASSNAME: org.postgresql.Driver
+      SPRING.DATASOURCE.INITIALIZATION-MODE: always
+      SPRING.DATASOURCE.INITIALIZE: true
+      SPRING.DATASOURCE.SCHEMA: classpath:/schema.sql
+      SPRING.DATASOURCE.CONTINUE-ON-ERROR: true
     depends_on:
       - server
   server: #Nombre del contenedor
