@@ -139,6 +139,54 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "getPersonByCriteria",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/person/criteria?&page=0&name=Jorge",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"person",
+								"criteria"
+							],
+							"query": [
+								{
+									"key": null,
+									"value": null
+								},
+								{
+									"key": "page",
+									"value": "0"
+								},
+								{
+									"key": "username",
+									"value": "jorge10",
+									"disabled": true
+								},
+								{
+									"key": "name",
+									"value": "Jorge"
+								},
+								{
+									"key": "creationDate",
+									"value": "19/03/2022",
+									"disabled": true
+								},
+								{
+									"key": "dateCriteria",
+									"value": "prev",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
