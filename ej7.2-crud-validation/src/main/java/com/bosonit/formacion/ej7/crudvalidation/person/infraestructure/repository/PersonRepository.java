@@ -5,6 +5,7 @@ import com.bosonit.formacion.ej7.crudvalidation.person.infraestructure.controlle
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
 

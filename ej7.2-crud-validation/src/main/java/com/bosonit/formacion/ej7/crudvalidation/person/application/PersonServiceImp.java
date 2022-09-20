@@ -3,9 +3,12 @@ package com.bosonit.formacion.ej7.crudvalidation.person.application;
 import com.bosonit.formacion.ej7.crudvalidation.exceptions.EntityNotFoundException;
 import com.bosonit.formacion.ej7.crudvalidation.exceptions.UnprocessableEntityException;
 import com.bosonit.formacion.ej7.crudvalidation.person.domain.Person;
+import com.bosonit.formacion.ej7.crudvalidation.person.domain.PersonPage;
+import com.bosonit.formacion.ej7.crudvalidation.person.domain.PersonSearchCriteria;
 import com.bosonit.formacion.ej7.crudvalidation.person.infraestructure.controller.input.PersonInputDto;
 import com.bosonit.formacion.ej7.crudvalidation.person.infraestructure.controller.output.PersonOutputDto;
 import com.bosonit.formacion.ej7.crudvalidation.person.infraestructure.controller.output.PersonOutputDtoWithRoleDetails;
+import com.bosonit.formacion.ej7.crudvalidation.person.infraestructure.repository.PersonCriteriaRepository;
 import com.bosonit.formacion.ej7.crudvalidation.person.infraestructure.repository.PersonRepository;
 import com.bosonit.formacion.ej7.crudvalidation.student.domain.Student;
 import com.bosonit.formacion.ej7.crudvalidation.student.infrastructure.repository.StudentRepository;
@@ -14,12 +17,12 @@ import com.bosonit.formacion.ej7.crudvalidation.student_subject.infrastructure.r
 import com.bosonit.formacion.ej7.crudvalidation.teacher.domain.Teacher;
 import com.bosonit.formacion.ej7.crudvalidation.teacher.infrastructure.repository.TeacherRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
@@ -27,6 +30,9 @@ public class PersonServiceImp implements PersonService{
 
     @Autowired
     PersonRepository personRepository;
+
+    @Autowired
+    PersonCriteriaRepository personCriteriaRepository;
 
     @Autowired
     StudentRepository studentRepository;
@@ -186,4 +192,15 @@ public class PersonServiceImp implements PersonService{
     public Optional<Person> getPersonOptional(int id) {
         return personRepository.findById(id);
     }
+
+    @Override
+    public Page<PersonOutputDto> getData(PersonPage page, PersonSearchCriteria personSearchCriteria) {
+
+        Page<Person> peoplePage = personCriteriaRepository.findAllWithFilters(page, personSearchCriteria);
+        List<PersonOutputDto> personOutputDtoList = peoplePage.getContent().stream().map(PersonOutputDto::new).collect(Collectors.toList());
+
+        return new PageImpl<>(personOutputDtoList, peoplePage.getPageable(), peoplePage.getTotalElements());
+    }
+
+
 }
