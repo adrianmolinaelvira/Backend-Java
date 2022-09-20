@@ -57,14 +57,14 @@ public class PersonCriteriaRepository {
 
         List<Predicate> predicates = new ArrayList<>();
         if(Objects.nonNull(personSearchCriteria.getUsername())){
-            predicates.add(criteriaBuilder.like(personRoot.get("username"),personSearchCriteria.getUsername()));
+            predicates.add(criteriaBuilder.like(personRoot.get("username"), "%" + personSearchCriteria.getUsername() + "%"));
         }
-        //Si queremos que coincida por letras sería: "%" + personSearchCriteria.getUsername() + "%", como segundo argumento del método like.
+        //Si no queremos que coincida por letras sería simplement sin los "%": personSearchCriteria.getUsername(), como segundo argumento del método like.
         if(Objects.nonNull(personSearchCriteria.getName())){
-            predicates.add(criteriaBuilder.like(personRoot.get("name"), personSearchCriteria.getName()));
+            predicates.add(criteriaBuilder.like(personRoot.get("name"), "%" + personSearchCriteria.getName() + "%"));
         }
         if(Objects.nonNull(personSearchCriteria.getSurname())){
-            predicates.add(criteriaBuilder.like(personRoot.get("username"), personSearchCriteria.getSurname()));
+            predicates.add(criteriaBuilder.like(personRoot.get("username"), "%" + personSearchCriteria.getSurname() + "%"));
         }
         if(Objects.nonNull(personSearchCriteria.getCreated_date())){
 
