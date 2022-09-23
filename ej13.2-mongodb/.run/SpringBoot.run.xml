@@ -1,0 +1,9 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="SpringBoot" type="Application" factoryName="Application">
+    <option name="MAIN_CLASS_NAME" value="com.bosonit.formacion.ej13.mongodb.Application" />
+    <module name="ej13.2-mongodb" />
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>
