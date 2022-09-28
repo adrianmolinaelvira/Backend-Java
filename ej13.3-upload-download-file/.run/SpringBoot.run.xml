@@ -1,0 +1,10 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="SpringBoot" type="Application" factoryName="Application">
+    <option name="MAIN_CLASS_NAME" value="com.bosonit.formacion.ej13.uploaddownloadfile.Application" />
+    <module name="ej13.3-upload-download-file" />
+    <option name="PROGRAM_PARAMETERS" value="src/files/" />
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>
