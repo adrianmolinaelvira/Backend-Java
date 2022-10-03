@@ -43,6 +43,10 @@ public class PersonServiceImp implements PersonService{
     @Autowired
     StudentSubjectRepository studentSubjectRepository;
 
+    /*public PersonServiceImp(PersonRepository personRepository){ //Needed for testing
+        this.personRepository=personRepository;
+    }*/
+
     @Override
     public PersonOutputDto addPerson(PersonInputDto newPersonDto) throws Exception {
         newPersonDto.setCreated_date(new Date());
@@ -157,7 +161,7 @@ public class PersonServiceImp implements PersonService{
         person.setName(personInputDto.getName());
         person.setSurname(personInputDto.getSurname());
         person.setCompany_email(personInputDto.getCompany_email());
-        person.setPersonal_email(personInputDto.getCompany_email());
+        person.setPersonal_email(personInputDto.getPersonal_email());
         person.setCity(personInputDto.getCity());
         person.setActive(personInputDto.getActive());
         person.setImagen_url(personInputDto.getImagen_url());
@@ -201,6 +205,4 @@ public class PersonServiceImp implements PersonService{
 
         return new PageImpl<>(personOutputDtoList, peoplePage.getPageable(), peoplePage.getTotalElements());
     }
-
-
 }

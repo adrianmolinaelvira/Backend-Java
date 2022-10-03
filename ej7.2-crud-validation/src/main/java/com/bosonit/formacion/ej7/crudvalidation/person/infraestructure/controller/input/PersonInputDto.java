@@ -1,10 +1,14 @@
 package com.bosonit.formacion.ej7.crudvalidation.person.infraestructure.controller.input;
 
 import com.bosonit.formacion.ej7.crudvalidation.person.domain.Person;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.Date;
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class PersonInputDto {
 
     private String usuario;
