@@ -1,5 +1,6 @@
 package com.bosonit.formacion.ej7.crudvalidation.person.application;
 
+import com.bosonit.formacion.ej7.crudvalidation.exceptions.UnprocessableEntityException;
 import com.bosonit.formacion.ej7.crudvalidation.person.domain.Person;
 import com.bosonit.formacion.ej7.crudvalidation.person.domain.PersonPage;
 import com.bosonit.formacion.ej7.crudvalidation.person.domain.PersonSearchCriteria;
@@ -22,6 +23,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.BDDMockito.*;
 import static org.mockito.Mockito.verify;
 
@@ -58,10 +60,22 @@ class PersonServiceImpTest {
         //given
 
         //when
-        personService.addPerson(newPersonInputDto);
+        PersonOutputDto personOutputDto = personService.addPerson(newPersonInputDto);
 
         //then
-        verify(personRepository).save(newPerson); //Verificamos si findAll() ha sido llamado.
+        assertThat(personOutputDto).isNotNull();
+    }
+
+    @Test
+    void canNotAddPerson() throws Exception {
+        //given
+        newPersonInputDto.setName(null);
+
+        //when
+        assertThrows(UnprocessableEntityException.class, () -> personService.addPerson(newPersonInputDto));
+
+        //then
+        verify(personRepository, never()).save(newPerson); //Verificamos que no se llame
     }
 
     @Test
@@ -135,6 +149,24 @@ class PersonServiceImpTest {
         assertThat(returnerPersonOutputDto.getCreated_date()).isEqualTo(personOutputDtoExpected.getCreated_date());
         assertThat(returnerPersonOutputDto.getSurname()).isEqualTo(personOutputDtoExpected.getSurname());
         assertThat(returnerPersonOutputDto.getTermination_date()).isEqualTo(personOutputDtoExpected.getTermination_date());
+    }
+
+    @Test
+    void canNotUpdate(){
+        //given
+        int id = 1;
+
+        given(personRepository.findById(id)).willReturn(Optional.of(newPerson));
+
+        newPersonInputDto.setUsuario("Jorge10");
+        newPersonInputDto.setName(null);
+        newPersonInputDto.setCity("Cuenca");
+
+        //when
+        assertThrows(UnprocessableEntityException.class, () -> personService.updatePerson(id, newPersonInputDto));
+
+        //then
+        verify(personRepository, never()).save(newPersonInputDto.transformIntoPerson());
     }
 
     @Test
