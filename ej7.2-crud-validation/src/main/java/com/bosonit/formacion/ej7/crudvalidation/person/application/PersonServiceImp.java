@@ -24,6 +24,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.*;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 @Service
 public class PersonServiceImp implements PersonService{
@@ -43,10 +44,6 @@ public class PersonServiceImp implements PersonService{
     @Autowired
     StudentSubjectRepository studentSubjectRepository;
 
-    /*public PersonServiceImp(PersonRepository personRepository){ //Needed for testing
-        this.personRepository=personRepository;
-    }*/
-
     @Override
     public PersonOutputDto addPerson(PersonInputDto newPersonDto) throws Exception {
         newPersonDto.setCreated_date(new Date());
@@ -62,15 +59,14 @@ public class PersonServiceImp implements PersonService{
         if(newPersonDto.getCompany_email() == null)
             throw new UnprocessableEntityException("Company email is not null", 422);
         if(!newPersonDto.getCompany_email().contains("@"))
-            throw new UnprocessableEntityException("Email format is not correct", 422);
+            throw new UnprocessableEntityException("Company Email format is not correct", 422);
         if(newPersonDto.getPersonal_email() == null)
-            throw new UnprocessableEntityException("Company email is not null", 422);
+            throw new UnprocessableEntityException("Personal email is not null", 422);
        if(!newPersonDto.getPersonal_email().contains("@"))
-            throw new UnprocessableEntityException("Email format is not correct", 422);
+            throw new UnprocessableEntityException("Personal Email format is not correct", 422);
        if(newPersonDto.getCity() == null)
             throw new UnprocessableEntityException("City can not be null", 422);
-       if(newPersonDto.getCreated_date() == null)
-            throw new UnprocessableEntityException("Created date can not be null", 422);
+
 
        Person newPerson = newPersonDto.transformIntoPerson();
 
@@ -110,7 +106,7 @@ public class PersonServiceImp implements PersonService{
            throw new EntityNotFoundException("Person does not exist", 404);
 
 
-       return peopleList.stream().map(person -> new PersonOutputDto(person)).collect(Collectors.toList());
+       return peopleList.stream().map(PersonOutputDto::new).toList();
 
     }
 
@@ -118,12 +114,9 @@ public class PersonServiceImp implements PersonService{
     public List<PersonOutputDto> getAllPeople() {
         List<Person> peopleList = personRepository.findAll();
 
-        List<PersonOutputDto> peopleOutputDto = new ArrayList<>();
+        List<PersonOutputDto> peopleOutputDto;
 
-        /*for(Person person : peopleList)
-            peopleOutputDto.add(new PersonOutputDto().transformPersonIntoPersonOutputDto(person));*/
-
-        peopleOutputDto = peopleList.stream().map(person -> new PersonOutputDto(person)).collect(Collectors.toList());
+        peopleOutputDto = peopleList.stream().map(PersonOutputDto::new).toList();
 
         return peopleOutputDto;
     }
@@ -146,11 +139,11 @@ public class PersonServiceImp implements PersonService{
         if(personInputDto.getCompany_email() == null)
             throw new UnprocessableEntityException("Company email is not null", 422);
         if(!personInputDto.getCompany_email().contains("@"))
-            throw new UnprocessableEntityException("Email format is not correct", 422);
+            throw new UnprocessableEntityException("Company Email format is not correct", 422);
         if(personInputDto.getPersonal_email() == null)
-            throw new UnprocessableEntityException("Company email is not null", 422);
+            throw new UnprocessableEntityException("Personal email is not null", 422);
         if(!personInputDto.getPersonal_email().contains("@"))
-            throw new UnprocessableEntityException("Email format is not correct", 422);
+            throw new UnprocessableEntityException("Personal Email format is not correct", 422);
         if(personInputDto.getCity() == null)
             throw new UnprocessableEntityException("City can not be null", 422);
 
@@ -201,7 +194,7 @@ public class PersonServiceImp implements PersonService{
     public Page<PersonOutputDto> getData(PersonPage page, PersonSearchCriteria personSearchCriteria) {
 
         Page<Person> peoplePage = personCriteriaRepository.findAllWithFilters(page, personSearchCriteria);
-        List<PersonOutputDto> personOutputDtoList = peoplePage.getContent().stream().map(PersonOutputDto::new).collect(Collectors.toList());
+        List<PersonOutputDto> personOutputDtoList = peoplePage.getContent().stream().map(PersonOutputDto::new).toList();
 
         return new PageImpl<>(personOutputDtoList, peoplePage.getPageable(), peoplePage.getTotalElements());
     }

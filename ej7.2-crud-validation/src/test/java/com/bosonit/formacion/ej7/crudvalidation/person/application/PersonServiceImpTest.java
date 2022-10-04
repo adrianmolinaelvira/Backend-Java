@@ -1,5 +1,6 @@
 package com.bosonit.formacion.ej7.crudvalidation.person.application;
 
+import com.bosonit.formacion.ej7.crudvalidation.exceptions.EntityNotFoundException;
 import com.bosonit.formacion.ej7.crudvalidation.exceptions.UnprocessableEntityException;
 import com.bosonit.formacion.ej7.crudvalidation.person.domain.Person;
 import com.bosonit.formacion.ej7.crudvalidation.person.domain.PersonPage;
@@ -67,9 +68,117 @@ class PersonServiceImpTest {
     }
 
     @Test
-    void canNotAddPerson() throws Exception {
+    void canNotAddPersonWithNullName() throws Exception {
         //given
         newPersonInputDto.setName(null);
+
+        //when
+        assertThrows(UnprocessableEntityException.class, () -> personService.addPerson(newPersonInputDto));
+
+        //then
+        verify(personRepository, never()).save(newPerson); //Verificamos que no se llame
+    }
+
+    @Test
+    void canNotAddPersonWithNullPassword() throws Exception {
+        //given
+        newPersonInputDto.setPassword(null);
+
+        //when
+        assertThrows(UnprocessableEntityException.class, () -> personService.addPerson(newPersonInputDto));
+
+        //then
+        verify(personRepository, never()).save(newPerson); //Verificamos que no se llame
+    }
+
+    @Test
+    void canNotAddPersonNullUsername() throws Exception {
+        //given
+        newPersonInputDto.setUsuario(null);
+
+        //when
+        assertThrows(UnprocessableEntityException.class, () -> personService.addPerson(newPersonInputDto));
+
+        //then
+        verify(personRepository, never()).save(newPerson); //Verificamos que no se llame
+    }
+
+    @Test
+    void canNotAddPersonWithLongUsername() throws Exception {
+        //given
+        newPersonInputDto.setUsuario("asdfghjklñzxcvbn");
+
+        //when
+        assertThrows(UnprocessableEntityException.class, () -> personService.addPerson(newPersonInputDto));
+
+        //then
+        verify(personRepository, never()).save(newPerson); //Verificamos que no se llame
+    }
+
+    @Test
+    void canNotAddPersonWithShortUsername() throws Exception {
+        //given
+        newPersonInputDto.setUsuario("asd");
+
+        //when
+        assertThrows(UnprocessableEntityException.class, () -> personService.addPerson(newPersonInputDto));
+
+        //then
+        verify(personRepository, never()).save(newPerson); //Verificamos que no se llame
+    }
+
+    @Test
+    void canNotAddPersonWithNullPersonalEmail() throws Exception {
+        //given
+        newPersonInputDto.setPersonal_email(null);
+
+        //when
+        assertThrows(UnprocessableEntityException.class, () -> personService.addPerson(newPersonInputDto));
+
+        //then
+        verify(personRepository, never()).save(newPerson); //Verificamos que no se llame
+    }
+
+    @Test
+    void canNotAddPersonWithNullCompanyEmail() throws Exception {
+        //given
+        newPersonInputDto.setCompany_email(null);
+
+        //when
+        assertThrows(UnprocessableEntityException.class, () -> personService.addPerson(newPersonInputDto));
+
+        //then
+        verify(personRepository, never()).save(newPerson); //Verificamos que no se llame
+    }
+
+    @Test
+    void canNotAddPersonWithoutCompanyEmailFormat() throws Exception {
+        //given
+        newPersonInputDto.setCompany_email("adrian.email");
+
+        //when
+        assertThrows(UnprocessableEntityException.class, () -> personService.addPerson(newPersonInputDto));
+
+        //then
+        verify(personRepository, never()).save(newPerson); //Verificamos que no se llame
+    }
+
+    @Test
+    void canNotAddPersonWithoutPersonalEmailFormat() throws Exception {
+        //given
+        newPersonInputDto.setPersonal_email("adrian.email");
+
+        //when
+        assertThrows(UnprocessableEntityException.class, () -> personService.addPerson(newPersonInputDto));
+
+        //then
+        verify(personRepository, never()).save(newPerson); //Verificamos que no se llame
+    }
+
+    @Test
+    void canNotAddPersonWithNullCity() throws Exception {
+        //given
+        newPersonInputDto.setCity(null);
 
         //when
         assertThrows(UnprocessableEntityException.class, () -> personService.addPerson(newPersonInputDto));
@@ -91,6 +200,20 @@ class PersonServiceImpTest {
 
         //then
         verify(personRepository).findById(id); //Verificamos que ha sido llamado
+    }
+
+    @Test
+    public void canNotFindByIdNotExistingPerson(){
+        //given
+        int id = 1;
+
+        given(personRepository.findById(id)).willReturn(Optional.empty());
+
+        //when
+        assertThrows(EntityNotFoundException.class, () -> personService.findPersonById(id));
+
+        //then
+
     }
 
     @Test
@@ -152,7 +275,43 @@ class PersonServiceImpTest {
     }
 
     @Test
-    void canNotUpdate(){
+    public void canNotUpdatePersonThatNotExist(){
+        //given
+        int id = 1;
+
+        given(personRepository.findById(1)).willReturn(Optional.empty());
+
+        newPersonInputDto.setUsuario("Jorge10");
+        newPersonInputDto.setName("Jorge");
+        newPersonInputDto.setCity("Cuenca");
+
+        //when
+        assertThrows(EntityNotFoundException.class, () -> personService.updatePerson(id, newPersonInputDto));
+
+        //then
+        verify(personRepository, never()).save(newPersonInputDto.transformIntoPerson());
+    }
+
+    @Test
+    public void canNotUpdatePersonWithNullUsername(){
+        //given
+        int id = 1;
+
+        given(personRepository.findById(id)).willReturn(Optional.of(newPerson));
+
+        newPersonInputDto.setUsuario(null);
+        newPersonInputDto.setName("Jorge");
+        newPersonInputDto.setCity("Cuenca");
+
+        //when
+        assertThrows(UnprocessableEntityException.class, () -> personService.updatePerson(id, newPersonInputDto));
+
+        //then
+        verify(personRepository, never()).save(newPersonInputDto.transformIntoPerson());
+    }
+
+    @Test
+    void canNotUpdateWithNullName(){
         //given
         int id = 1;
 
@@ -161,6 +320,134 @@ class PersonServiceImpTest {
         newPersonInputDto.setUsuario("Jorge10");
         newPersonInputDto.setName(null);
         newPersonInputDto.setCity("Cuenca");
+
+        //when
+        assertThrows(UnprocessableEntityException.class, () -> personService.updatePerson(id, newPersonInputDto));
+
+        //then
+        verify(personRepository, never()).save(newPersonInputDto.transformIntoPerson());
+    }
+
+    @Test
+    public void canNotUpdatePersonWithLongUsername(){
+        //given
+        int id = 1;
+
+        given(personRepository.findById(id)).willReturn(Optional.of(newPerson));
+
+        newPersonInputDto.setUsuario("asdfghjklñasdfg");
+
+        //when
+        assertThrows(UnprocessableEntityException.class, () -> personService.updatePerson(id, newPersonInputDto));
+
+        //then
+        verify(personRepository, never()).save(newPersonInputDto.transformIntoPerson());
+    }
+
+    @Test
+    public void canNotUpdatePersonWithShortUsername(){
+        //given
+        int id = 1;
+
+        given(personRepository.findById(id)).willReturn(Optional.of(newPerson));
+
+        newPersonInputDto.setUsuario("asd");
+
+        //when
+        assertThrows(UnprocessableEntityException.class, () -> personService.updatePerson(id, newPersonInputDto));
+
+        //then
+        verify(personRepository, never()).save(newPersonInputDto.transformIntoPerson());
+    }
+
+    @Test
+    public void canNotUpdatePersonWithNullPassword(){
+        //given
+        int id = 1;
+
+        given(personRepository.findById(id)).willReturn(Optional.of(newPerson));
+
+        newPersonInputDto.setPassword(null);
+
+        //when
+        assertThrows(UnprocessableEntityException.class, () -> personService.updatePerson(id, newPersonInputDto));
+
+        //then
+        verify(personRepository, never()).save(newPersonInputDto.transformIntoPerson());
+    }
+
+    @Test
+    public void canNotUpdatePersonWithNullCity(){
+        //given
+        int id = 1;
+
+        given(personRepository.findById(id)).willReturn(Optional.of(newPerson));
+
+        newPersonInputDto.setCity(null);
+
+        //when
+        assertThrows(UnprocessableEntityException.class, () -> personService.updatePerson(id, newPersonInputDto));
+
+        //then
+        verify(personRepository, never()).save(newPersonInputDto.transformIntoPerson());
+    }
+
+    @Test
+    public void canNotUpdatePersonWithNullCompanyEmail(){
+        //given
+        int id = 1;
+
+        given(personRepository.findById(id)).willReturn(Optional.of(newPerson));
+
+        newPersonInputDto.setCompany_email(null);
+
+        //when
+        assertThrows(UnprocessableEntityException.class, () -> personService.updatePerson(id, newPersonInputDto));
+
+        //then
+        verify(personRepository, never()).save(newPersonInputDto.transformIntoPerson());
+    }
+
+    @Test
+    public void canNotUpdatePersonWithWrongCompanyEmailFormat(){
+        //given
+        int id = 1;
+
+        given(personRepository.findById(id)).willReturn(Optional.of(newPerson));
+
+        newPersonInputDto.setCompany_email("adrian.company.email");
+
+        //when
+        assertThrows(UnprocessableEntityException.class, () -> personService.updatePerson(id, newPersonInputDto));
+
+        //then
+        verify(personRepository, never()).save(newPersonInputDto.transformIntoPerson());
+    }
+
+    @Test
+    public void canNotUpdatePersonWithNullPersonalEmail(){
+        //given
+        int id = 1;
+
+        given(personRepository.findById(id)).willReturn(Optional.of(newPerson));
+
+        newPersonInputDto.setPersonal_email(null);
+
+        //when
+        assertThrows(UnprocessableEntityException.class, () -> personService.updatePerson(id, newPersonInputDto));
+
+        //then
+        verify(personRepository, never()).save(newPersonInputDto.transformIntoPerson());
+    }
+
+    @Test
+    public void canNotUpdatePersonWithWrongPersonalEmailFormat(){
+        //given
+        int id = 1;
+
+        given(personRepository.findById(id)).willReturn(Optional.of(newPerson));
+
+        newPersonInputDto.setPersonal_email("adrian.company.email");
 
         //when
         assertThrows(UnprocessableEntityException.class, () -> personService.updatePerson(id, newPersonInputDto));
@@ -185,12 +472,22 @@ class PersonServiceImpTest {
     }
 
     @Test
+    public void canNotDeleteNotExistingPerson(){
+        //given
+        int id = 1;
+
+        given(personRepository.findById(id)).willReturn(Optional.empty());
+
+        //When
+        assertThrows(EntityNotFoundException.class, () -> personService.deletePerson(id));
+
+        //Then
+        verify(personRepository, never()).delete(newPerson);
+    }
+
+    @Test
     void canGetPersonOptional() {
         //given
-        PersonInputDto newPersonInputDto = new PersonInputDto("adrimo100", "12345", "Adrián", "Molina",
-                "adrian@company.com", "adrian@personal.com", "Guadalajara",
-                true,new Date(), null, null);
-        Person newPerson = newPersonInputDto.transformIntoPerson();
 
         //when
         personService.getPersonOptional(1);

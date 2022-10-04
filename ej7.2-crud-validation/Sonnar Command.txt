@@ -1,1 +1,5 @@
+//Para arrancar el contenedor con Sonar
+$ docker run -d --name sonarqube -e SONAR_ES_BOOTSTRAP_CHECKS_DISABLE=true -p 9000:9000 sonarqube:latest
+
+//Para evaluar el proyecto con sonar (Ejecutar en CMD o BASH en el directorio raiz del proyecto)
 mvn clean verify sonar:sonar -Dsonar.projectKey=Ejercicio14.1 -Dsonar.host.url=http://localhost:9000 -Dsonar.login=sqp_bc8dccf28fa4bf4a81e22bf6a2bb0a84a987c0ae
