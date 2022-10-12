@@ -5,11 +5,9 @@ import com.bosonit.formacion.ej7.crudvalidation.student_subject.domain.StudentSu
 import com.bosonit.formacion.ej7.crudvalidation.teacher.domain.Teacher;
 import lombok.Data;
 import org.hibernate.annotations.GenericGenerator;
-import org.hibernate.annotations.Parameter;
 
 import javax.persistence.*;
 import java.util.List;
-import java.util.Set;
 
 @Data
 @Entity

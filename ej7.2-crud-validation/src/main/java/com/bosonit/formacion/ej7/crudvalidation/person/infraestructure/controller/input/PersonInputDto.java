@@ -22,6 +22,7 @@ public class PersonInputDto {
     private Date created_date;
     private String imagen_url;
     private Date termination_date;
+    private boolean admin;
 
     public Person transformIntoPerson(){
         Person person = new Person();
@@ -36,6 +37,7 @@ public class PersonInputDto {
         person.setCreated_date(this.created_date);
         person.setImagen_url(this.imagen_url);
         person.setTermination_date(this.termination_date);
+        person.setAdmin(this.admin);
 
         return person;
     }

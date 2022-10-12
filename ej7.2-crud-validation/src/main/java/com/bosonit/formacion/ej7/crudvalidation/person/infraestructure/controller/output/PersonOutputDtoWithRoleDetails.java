@@ -24,6 +24,7 @@ public class PersonOutputDtoWithRoleDetails {
     private Date created_date;
     private String imagen_url;
     private Date termination_date;
+    private boolean admin;
 
     private TeacherOutputDto teacherData;
 
@@ -31,7 +32,7 @@ public class PersonOutputDtoWithRoleDetails {
 
     private StudentOutputDtoWithSubjects studentData;
 
-    public PersonOutputDtoWithRoleDetails(Person person, Teacher teacher,List<Student> studentsList,Student student) {
+    public PersonOutputDtoWithRoleDetails(Person person, Teacher teacher, List<Student> studentsList, Student student) {
         this.person_id = person.getId_person();
         this.user = person.getUsername();
         this.name = person.getName();
@@ -43,6 +44,7 @@ public class PersonOutputDtoWithRoleDetails {
         this.created_date = person.getCreated_date();
         this.imagen_url = person.getImagen_url();
         this.termination_date = person.getTermination_date();
+        this.admin = person.isAdmin();
 
         if (teacher != null) {
             setTeacherData(new TeacherOutputDto(teacher));

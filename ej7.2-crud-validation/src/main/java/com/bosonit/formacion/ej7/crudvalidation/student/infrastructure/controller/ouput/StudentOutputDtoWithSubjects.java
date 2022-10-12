@@ -2,14 +2,11 @@ package com.bosonit.formacion.ej7.crudvalidation.student.infrastructure.controll
 
 import com.bosonit.formacion.ej7.crudvalidation.person.infraestructure.controller.output.PersonOutputDto;
 import com.bosonit.formacion.ej7.crudvalidation.student.domain.Student;
-import com.bosonit.formacion.ej7.crudvalidation.student_subject.domain.StudentSubject;
-import com.bosonit.formacion.ej7.crudvalidation.student_subject.infrastructure.controller.ouput.StudentSubjectOutputDto;
 import com.bosonit.formacion.ej7.crudvalidation.student_subject.infrastructure.controller.ouput.StudentSubjectOutputDtoWithoutStudents;
 import com.bosonit.formacion.ej7.crudvalidation.teacher.infrastructure.controller.ouput.TeacherOutputDto;
 import lombok.Data;
 
 import java.util.List;
-import java.util.Set;
 import java.util.stream.Collectors;
 
 @Data

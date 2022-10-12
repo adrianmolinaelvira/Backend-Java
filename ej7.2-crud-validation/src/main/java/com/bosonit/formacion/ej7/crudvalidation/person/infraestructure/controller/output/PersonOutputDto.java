@@ -1,12 +1,9 @@
 package com.bosonit.formacion.ej7.crudvalidation.person.infraestructure.controller.output;
 
 import com.bosonit.formacion.ej7.crudvalidation.person.domain.Person;
-import com.bosonit.formacion.ej7.crudvalidation.student.infrastructure.controller.ouput.StudentOutputDtoWithSubjects;
-import com.bosonit.formacion.ej7.crudvalidation.teacher.infrastructure.controller.ouput.TeacherOutputDto;
 import lombok.Data;
 
 import java.util.Date;
-import java.util.List;
 
 @Data
 public class PersonOutputDto {
@@ -21,6 +18,7 @@ public class PersonOutputDto {
     private Date created_date;
     private String imagen_url;
     private Date termination_date;
+    private boolean admin;
 
     public PersonOutputDto(Person person){
         this.person_id = person.getId_person();
@@ -34,6 +32,7 @@ public class PersonOutputDto {
         this.created_date = person.getCreated_date();
         this.imagen_url = person.getImagen_url();
         this.termination_date = person.getTermination_date();
+        this.admin = person.isAdmin();
     }
 }
 

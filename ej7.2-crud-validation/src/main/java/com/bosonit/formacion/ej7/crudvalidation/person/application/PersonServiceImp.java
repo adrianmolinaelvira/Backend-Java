@@ -2,14 +2,14 @@ package com.bosonit.formacion.ej7.crudvalidation.person.application;
 
 import com.bosonit.formacion.ej7.crudvalidation.exceptions.EntityNotFoundException;
 import com.bosonit.formacion.ej7.crudvalidation.exceptions.UnprocessableEntityException;
-import com.bosonit.formacion.ej7.crudvalidation.person.domain.Person;
 import com.bosonit.formacion.ej7.crudvalidation.person.domain.PersonPage;
 import com.bosonit.formacion.ej7.crudvalidation.person.domain.PersonSearchCriteria;
+import com.bosonit.formacion.ej7.crudvalidation.person.infraestructure.repository.PersonCriteriaRepository;
+import com.bosonit.formacion.ej7.crudvalidation.person.infraestructure.repository.PersonRepository;
+import com.bosonit.formacion.ej7.crudvalidation.person.domain.Person;
 import com.bosonit.formacion.ej7.crudvalidation.person.infraestructure.controller.input.PersonInputDto;
 import com.bosonit.formacion.ej7.crudvalidation.person.infraestructure.controller.output.PersonOutputDto;
 import com.bosonit.formacion.ej7.crudvalidation.person.infraestructure.controller.output.PersonOutputDtoWithRoleDetails;
-import com.bosonit.formacion.ej7.crudvalidation.person.infraestructure.repository.PersonCriteriaRepository;
-import com.bosonit.formacion.ej7.crudvalidation.person.infraestructure.repository.PersonRepository;
 import com.bosonit.formacion.ej7.crudvalidation.student.domain.Student;
 import com.bosonit.formacion.ej7.crudvalidation.student.infrastructure.repository.StudentRepository;
 import com.bosonit.formacion.ej7.crudvalidation.student_subject.domain.StudentSubject;
@@ -19,15 +19,17 @@ import com.bosonit.formacion.ej7.crudvalidation.teacher.infrastructure.repositor
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
-import org.springframework.data.domain.Pageable;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 @Service
-public class PersonServiceImp implements PersonService{
+public class PersonServiceImp implements PersonService, UserDetailsService {
 
     @Autowired
     PersonRepository personRepository;
@@ -43,6 +45,28 @@ public class PersonServiceImp implements PersonService{
 
     @Autowired
     StudentSubjectRepository studentSubjectRepository;
+
+    @Autowired
+    PasswordEncoder passwordEncoder;
+
+    //To load the user spring security object from DB for Authentication
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        Person person = personRepository.findByUsername(username).get(0);
+
+        if(person == null)
+            throw new EntityNotFoundException("The person does no exist", 404);
+
+        Collection<SimpleGrantedAuthority> authorities = new ArrayList<>();
+
+        //Management of permissions
+        if(person.isAdmin())
+            authorities.add(new SimpleGrantedAuthority("admin"));
+        else
+            authorities.add(new SimpleGrantedAuthority("user"));
+
+        return new org.springframework.security.core.userdetails.User(person.getUsername(), person.getPassword(), authorities);
+    }
 
     @Override
     public PersonOutputDto addPerson(PersonInputDto newPersonDto) throws Exception {
@@ -67,9 +91,9 @@ public class PersonServiceImp implements PersonService{
        if(newPersonDto.getCity() == null)
             throw new UnprocessableEntityException("City can not be null", 422);
 
-
        Person newPerson = newPersonDto.transformIntoPerson();
 
+       newPerson.setPassword(passwordEncoder.encode(newPerson.getPassword())); //We encode the password in the DB
        personRepository.save(newPerson);
 
        return new PersonOutputDto(newPerson);
@@ -150,7 +174,7 @@ public class PersonServiceImp implements PersonService{
         Person person = personOpt.get();
 
         person.setUsername(personInputDto.getUsuario());
-        person.setPassword(personInputDto.getPassword());
+        person.setPassword(passwordEncoder.encode(personInputDto.getPassword()));
         person.setName(personInputDto.getName());
         person.setSurname(personInputDto.getSurname());
         person.setCompany_email(personInputDto.getCompany_email());
@@ -158,6 +182,7 @@ public class PersonServiceImp implements PersonService{
         person.setCity(personInputDto.getCity());
         person.setActive(personInputDto.getActive());
         person.setImagen_url(personInputDto.getImagen_url());
+        person.setAdmin(personInputDto.isAdmin());
 
         personRepository.save(person);
 

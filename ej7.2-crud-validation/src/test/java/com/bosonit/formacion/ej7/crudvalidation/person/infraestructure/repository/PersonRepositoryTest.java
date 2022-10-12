@@ -9,10 +9,8 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 
 import java.util.Date;
 import java.util.List;
-import java.util.Optional;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
-import static org.mockito.BDDMockito.given;
 
 @DataJpaTest
 class PersonRepositoryTest {
@@ -30,7 +28,7 @@ class PersonRepositoryTest {
         //given
         Person person = new PersonInputDto("adrimo100", "12345", "Adrián", "Molina",
                 "adrian@company.com", "adrian@personal.com", "Guadalajara",
-                true, new Date(), null, null).transformIntoPerson();
+                true, new Date(), null, null, false).transformIntoPerson();
 
         personRepository.save(person);
 

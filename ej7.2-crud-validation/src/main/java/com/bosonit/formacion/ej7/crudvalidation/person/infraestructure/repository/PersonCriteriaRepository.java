@@ -3,8 +3,6 @@ package com.bosonit.formacion.ej7.crudvalidation.person.infraestructure.reposito
 import com.bosonit.formacion.ej7.crudvalidation.person.domain.Person;
 import com.bosonit.formacion.ej7.crudvalidation.person.domain.PersonPage;
 import com.bosonit.formacion.ej7.crudvalidation.person.domain.PersonSearchCriteria;
-import com.bosonit.formacion.ej7.crudvalidation.person.infraestructure.controller.output.PersonOutputDto;
-import org.springframework.boot.autoconfigure.data.web.SpringDataWebProperties;
 import org.springframework.data.domain.*;
 import org.springframework.stereotype.Repository;
 
@@ -17,7 +15,6 @@ import javax.persistence.criteria.Root;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import java.util.stream.Collectors;
 
 @Repository
 public class PersonCriteriaRepository {

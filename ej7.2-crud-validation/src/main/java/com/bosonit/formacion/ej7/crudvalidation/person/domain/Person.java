@@ -50,12 +50,11 @@ public class Person implements Serializable {
     @Column
     private Date termination_date;
 
+    @Column(nullable = false, columnDefinition = "boolean default false")
+    private boolean admin;
+
 
     public boolean getActive(){
         return this.active;
     }
-
-
-
-
 }

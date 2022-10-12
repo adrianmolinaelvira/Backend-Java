@@ -1,15 +1,13 @@
 package com.bosonit.formacion.ej7.crudvalidation.person.application;
 
-import com.bosonit.formacion.ej7.crudvalidation.person.domain.Person;
 import com.bosonit.formacion.ej7.crudvalidation.person.domain.PersonPage;
 import com.bosonit.formacion.ej7.crudvalidation.person.domain.PersonSearchCriteria;
+import com.bosonit.formacion.ej7.crudvalidation.person.domain.Person;
 import com.bosonit.formacion.ej7.crudvalidation.person.infraestructure.controller.input.PersonInputDto;
 import com.bosonit.formacion.ej7.crudvalidation.person.infraestructure.controller.output.PersonOutputDto;
 import com.bosonit.formacion.ej7.crudvalidation.person.infraestructure.controller.output.PersonOutputDtoWithRoleDetails;
 import org.springframework.data.domain.Page;
 
-import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
 

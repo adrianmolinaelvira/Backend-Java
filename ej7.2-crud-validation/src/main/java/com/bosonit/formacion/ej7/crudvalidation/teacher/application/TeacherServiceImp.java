@@ -3,8 +3,6 @@ package com.bosonit.formacion.ej7.crudvalidation.teacher.application;
 import com.bosonit.formacion.ej7.crudvalidation.exceptions.EntityNotFoundException;
 import com.bosonit.formacion.ej7.crudvalidation.exceptions.UnprocessableEntityException;
 import com.bosonit.formacion.ej7.crudvalidation.person.infraestructure.repository.PersonRepository;
-import com.bosonit.formacion.ej7.crudvalidation.student.application.StudentService;
-import com.bosonit.formacion.ej7.crudvalidation.person.application.PersonService;
 import com.bosonit.formacion.ej7.crudvalidation.person.domain.Person;
 import com.bosonit.formacion.ej7.crudvalidation.student.domain.Student;
 import com.bosonit.formacion.ej7.crudvalidation.student.infrastructure.repository.StudentRepository;

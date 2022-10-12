@@ -11,7 +11,6 @@ import com.bosonit.formacion.ej7.crudvalidation.person.infraestructure.repositor
 import com.bosonit.formacion.ej7.crudvalidation.person.infraestructure.repository.PersonRepository;
 import com.bosonit.formacion.ej7.crudvalidation.student.infrastructure.repository.StudentRepository;
 import com.bosonit.formacion.ej7.crudvalidation.teacher.infrastructure.repository.TeacherRepository;
-import org.assertj.core.api.Assert;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -52,7 +51,7 @@ class PersonServiceImpTest {
     void setUp(){
         newPersonInputDto = new PersonInputDto("adrimo100", "12345", "Adrián", "Molina",
                 "adrian@company.com", "adrian@personal.com", "Guadalajara",
-                true,new Date(), null, null);
+                true,new Date(), null, null, false);
         newPerson = newPersonInputDto.transformIntoPerson();
     }
 
@@ -272,6 +271,7 @@ class PersonServiceImpTest {
         assertThat(returnerPersonOutputDto.getCreated_date()).isEqualTo(personOutputDtoExpected.getCreated_date());
         assertThat(returnerPersonOutputDto.getSurname()).isEqualTo(personOutputDtoExpected.getSurname());
         assertThat(returnerPersonOutputDto.getTermination_date()).isEqualTo(personOutputDtoExpected.getTermination_date());
+        assertThat(returnerPersonOutputDto.isAdmin()).isEqualTo(personOutputDtoExpected.isAdmin());
     }
 
     @Test
