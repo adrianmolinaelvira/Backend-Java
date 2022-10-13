@@ -1,4 +1,4 @@
-package com.bosonit.formacion.ej7.crudvalidation.security;
+package com.bosonit.formacion.ej7.crudvalidation.security.filters;
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
@@ -22,6 +22,7 @@ import java.util.Map;
 
 import static org.springframework.util.MimeTypeUtils.APPLICATION_JSON_VALUE;
 
+//Used for login
 public class CustomAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
 
     private final AuthenticationManager authenticationManager;
