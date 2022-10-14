@@ -15,7 +15,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
-import static org.springframework.http.HttpMethod.POST;
+import static org.springframework.http.HttpMethod.*;
 
 @Configuration
 @EnableWebSecurity
@@ -34,7 +34,7 @@ public class SecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         //Custom login
         CustomAuthenticationFilter customAuthenticationFilter = new CustomAuthenticationFilter(authenticationManagerBean(authenticationConfiguration));
-        customAuthenticationFilter.setFilterProcessesUrl("/api/login"); //Creates a custom login endpint using our custom filter
+        customAuthenticationFilter.setFilterProcessesUrl("/api/login"); //Creates a custom login endpoint using our custom filter
         http.authorizeRequests().antMatchers(POST, "/api/login").permitAll();
         http.addFilter(customAuthenticationFilter); //Adds our custom Authentication Filter
 
@@ -44,7 +44,11 @@ public class SecurityConfig {
         //Endpoints filter
         http.csrf().disable(); //Because it is a REST API, and we don't save user date between sessions (Stateless app)
         http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
-        http.authorizeRequests().antMatchers(POST, "/addperson").hasAnyAuthority("admin");
+        http.authorizeRequests().antMatchers(POST, "/addperson").hasAnyAuthority("admin"); //Only rol "admin" can access to POST "/addperson"
+        http.authorizeRequests().antMatchers(POST, "/**").hasAnyAuthority("admin"); //"**" in a route is a wildcard
+        http.authorizeRequests().antMatchers(PUT, "/**").hasAnyAuthority("admin");
+        http.authorizeRequests().antMatchers(DELETE, "/**").hasAnyAuthority("admin");
+        http.authorizeRequests().antMatchers(GET, "/teacher/**").permitAll();
         http.authorizeRequests().anyRequest().authenticated(); //Allows only authenticated user
         //http.authorizeRequests().anyRequest().permitAll(); //Allows everyone to access all the resources
         //http.authorizeRequests().antMatchers(GET, "/test").permitAll(); //Allows everyone to access this resource

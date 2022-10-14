@@ -10,13 +10,57 @@
 			"name": "Person",
 			"item": [
 				{
-					"name": "addPerson",
+					"name": "login",
 					"request": {
 						"method": "POST",
 						"header": [],
 						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "username",
+									"value": "adminis",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "admin",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:8080/api/login",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "addPerson",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZHJpYW4xNCIsInJvbGVzIjpbInVzZXIiXSwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4MDgwL2FwaS9sb2dpbiIsImV4cCI6MTY2NTY4MDE1Mn0.oOjCsLfHN_xv6WFzSsoxDmBZsMhn98c6v7F1cW_LyoE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"Jorge\",\r\n    \"usuario\": \"jorge14\",\r\n    \"password\": \"12345\",\r\n    \"surname\": \"Pérez\",\r\n    \"company_email\": \"jorge@work.api\",\r\n    \"personal_email\": \"jorge@personal.api\",\r\n    \"city\": \"Cuenca\",\r\n    \"active\": true\r\n}",
+							"raw": "{\r\n    \"name\": \"test\",\r\n    \"usuario\": \"adrian14\",\r\n    \"password\": \"12345\",\r\n    \"surname\": \"Molina\",\r\n    \"company_email\": \"adrian@work.api\",\r\n    \"personal_email\": \"adrian@personal.api\",\r\n    \"city\": \"Cuenca\",\r\n    \"active\": true\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -39,6 +83,16 @@
 				{
 					"name": "getAllPeople",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZHJpYW4xNCIsInJvbGVzIjpbInVzZXIiXSwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4MDgwL2FwaS9sb2dpbiIsImV4cCI6MTY2NTc2NTE3Mn0.gX6-eIpr-7eqpNRtxqI0H2_I7uZvselNBomI9ZZ-tp4",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [],
 						"url": {
@@ -57,6 +111,16 @@
 				{
 					"name": "getPersonById",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbmlzIiwicm9sZXMiOlsiYWRtaW4iXSwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4MDgwL2FwaS9sb2dpbiIsImV4cCI6MTY2NTY3OTkwMn0.Oi3ugu_KXRI2v9-yKTy9DrWfX2hhYlZCCuhqPKsbwrU",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [],
 						"url": {
@@ -76,6 +140,16 @@
 				{
 					"name": "getPersonByUsername",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbmlzIiwicm9sZXMiOlsiYWRtaW4iXSwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4MDgwL2FwaS9sb2dpbiIsImV4cCI6MTY2NTc2NTI1NX0.tfnA9jPSBR7BeQQn3qfvJHg2fWkWbwLWgKe0Jk1Mvi8",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [],
 						"url": {
@@ -96,11 +170,21 @@
 				{
 					"name": "updatePerson",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbmlzIiwicm9sZXMiOlsiYWRtaW4iXSwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4MDgwL2FwaS9sb2dpbiIsImV4cCI6MTY2NTc2NTI1NX0.tfnA9jPSBR7BeQQn3qfvJHg2fWkWbwLWgKe0Jk1Mvi8",
+									"type": "string"
+								}
+							]
+						},
 						"method": "PUT",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"jorge\",\r\n    \"user\": \"jorge200\",\r\n    \"password\": \"54321\",\r\n    \"surname\": \"Pérez\",\r\n    \"company_email\": \"jorge@work.api\",\r\n    \"personal_email\": \"jorge@personal.api\",\r\n    \"city\": \"Cuenca\",\r\n    \"active\": true\r\n}",
+							"raw": "{\r\n    \"name\": \"jorge\",\r\n    \"usuario\": \"jorge200\",\r\n    \"password\": \"54321\",\r\n    \"surname\": \"Pérez\",\r\n    \"company_email\": \"jorge@work.api\",\r\n    \"personal_email\": \"jorge@personal.api\",\r\n    \"city\": \"Cuenca\",\r\n    \"active\": true\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -196,6 +280,16 @@
 				{
 					"name": "addStudent",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZHJpYW4xNCIsInJvbGVzIjpbInVzZXIiXSwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4MDgwL2FwaS9sb2dpbiIsImV4cCI6MTY2NTc2NTE3Mn0.gX6-eIpr-7eqpNRtxqI0H2_I7uZvselNBomI9ZZ-tp4",
+									"type": "string"
+								}
+							]
+						},
 						"method": "POST",
 						"header": [],
 						"body": {
@@ -223,6 +317,16 @@
 				{
 					"name": "getStudent",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZHJpYW4xNCIsInJvbGVzIjpbInVzZXIiXSwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4MDgwL2FwaS9sb2dpbiIsImV4cCI6MTY2NTc2NTE3Mn0.gX6-eIpr-7eqpNRtxqI0H2_I7uZvselNBomI9ZZ-tp4",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [],
 						"url": {
@@ -248,6 +352,16 @@
 				{
 					"name": "updateStudent",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbmlzIiwicm9sZXMiOlsiYWRtaW4iXSwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4MDgwL2FwaS9sb2dpbiIsImV4cCI6MTY2NTc2NTI1NX0.tfnA9jPSBR7BeQQn3qfvJHg2fWkWbwLWgKe0Jk1Mvi8",
+									"type": "string"
+								}
+							]
+						},
 						"method": "PUT",
 						"header": [],
 						"body": {
@@ -276,6 +390,16 @@
 				{
 					"name": "deleteStudent",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbmlzIiwicm9sZXMiOlsiYWRtaW4iXSwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4MDgwL2FwaS9sb2dpbiIsImV4cCI6MTY2NTc2NTI1NX0.tfnA9jPSBR7BeQQn3qfvJHg2fWkWbwLWgKe0Jk1Mvi8",
+									"type": "string"
+								}
+							]
+						},
 						"method": "DELETE",
 						"header": [],
 						"url": {
@@ -295,6 +419,16 @@
 				{
 					"name": "addSubjectToStudent",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbmlzIiwicm9sZXMiOlsiYWRtaW4iXSwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4MDgwL2FwaS9sb2dpbiIsImV4cCI6MTY2NTc2NTI1NX0.tfnA9jPSBR7BeQQn3qfvJHg2fWkWbwLWgKe0Jk1Mvi8",
+									"type": "string"
+								}
+							]
+						},
 						"method": "PUT",
 						"header": [],
 						"body": {
@@ -324,6 +458,16 @@
 				{
 					"name": "deleteSubjectFromStudent",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbmlzIiwicm9sZXMiOlsiYWRtaW4iXSwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4MDgwL2FwaS9sb2dpbiIsImV4cCI6MTY2NTc2NTI1NX0.tfnA9jPSBR7BeQQn3qfvJHg2fWkWbwLWgKe0Jk1Mvi8",
+									"type": "string"
+								}
+							]
+						},
 						"method": "DELETE",
 						"header": [],
 						"body": {
@@ -358,6 +502,16 @@
 				{
 					"name": "addTeacher",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbmlzIiwicm9sZXMiOlsiYWRtaW4iXSwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4MDgwL2FwaS9sb2dpbiIsImV4cCI6MTY2NTc2NTI1NX0.tfnA9jPSBR7BeQQn3qfvJHg2fWkWbwLWgKe0Jk1Mvi8",
+									"type": "string"
+								}
+							]
+						},
 						"method": "POST",
 						"header": [],
 						"body": {
@@ -385,6 +539,16 @@
 				{
 					"name": "updateTeacher",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbmlzIiwicm9sZXMiOlsiYWRtaW4iXSwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4MDgwL2FwaS9sb2dpbiIsImV4cCI6MTY2NTc2NTI1NX0.tfnA9jPSBR7BeQQn3qfvJHg2fWkWbwLWgKe0Jk1Mvi8",
+									"type": "string"
+								}
+							]
+						},
 						"method": "PUT",
 						"header": [],
 						"body": {
@@ -413,6 +577,16 @@
 				{
 					"name": "getTeacher",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbmlzIiwicm9sZXMiOlsiYWRtaW4iXSwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4MDgwL2FwaS9sb2dpbiIsImV4cCI6MTY2NTc2NTI1NX0.tfnA9jPSBR7BeQQn3qfvJHg2fWkWbwLWgKe0Jk1Mvi8",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [],
 						"url": {
@@ -432,6 +606,16 @@
 				{
 					"name": "getTeacherWithFeing",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbmlzIiwicm9sZXMiOlsiYWRtaW4iXSwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4MDgwL2FwaS9sb2dpbiIsImV4cCI6MTY2NTc2NTI1NX0.tfnA9jPSBR7BeQQn3qfvJHg2fWkWbwLWgKe0Jk1Mvi8",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [],
 						"url": {
@@ -452,6 +636,16 @@
 				{
 					"name": "deleteTeacher",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbmlzIiwicm9sZXMiOlsiYWRtaW4iXSwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4MDgwL2FwaS9sb2dpbiIsImV4cCI6MTY2NTc2NTI1NX0.tfnA9jPSBR7BeQQn3qfvJHg2fWkWbwLWgKe0Jk1Mvi8",
+									"type": "string"
+								}
+							]
+						},
 						"method": "DELETE",
 						"header": [],
 						"url": {
@@ -476,6 +670,16 @@
 				{
 					"name": "addSubject",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbmlzIiwicm9sZXMiOlsiYWRtaW4iXSwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4MDgwL2FwaS9sb2dpbiIsImV4cCI6MTY2NTc2NTI1NX0.tfnA9jPSBR7BeQQn3qfvJHg2fWkWbwLWgKe0Jk1Mvi8",
+									"type": "string"
+								}
+							]
+						},
 						"method": "POST",
 						"header": [],
 						"body": {
@@ -503,6 +707,16 @@
 				{
 					"name": "updateSubject",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbmlzIiwicm9sZXMiOlsiYWRtaW4iXSwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4MDgwL2FwaS9sb2dpbiIsImV4cCI6MTY2NTc2NTI1NX0.tfnA9jPSBR7BeQQn3qfvJHg2fWkWbwLWgKe0Jk1Mvi8",
+									"type": "string"
+								}
+							]
+						},
 						"method": "PUT",
 						"header": [],
 						"body": {
@@ -531,6 +745,16 @@
 				{
 					"name": "getSubjectById",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbmlzIiwicm9sZXMiOlsiYWRtaW4iXSwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4MDgwL2FwaS9sb2dpbiIsImV4cCI6MTY2NTc2NTI1NX0.tfnA9jPSBR7BeQQn3qfvJHg2fWkWbwLWgKe0Jk1Mvi8",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [],
 						"url": {
