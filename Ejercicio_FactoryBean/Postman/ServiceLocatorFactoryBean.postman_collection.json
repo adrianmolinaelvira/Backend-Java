@@ -1,0 +1,37 @@
+{
+	"info": {
+		"_postman_id": "54256a10-a456-40b1-a04e-4d73332e2f98",
+		"name": "ServiceLocatorFactoryBean",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "22787527"
+	},
+	"item": [
+		{
+			"name": "getAnimal",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Cow\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/animal",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"animal"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
