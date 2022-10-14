@@ -39,7 +39,7 @@ public class CustomAuthenticationFilter extends UsernamePasswordAuthenticationFi
 
         UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(username, password); //We generate the JWT token
 
-        return authenticationManager.authenticate(authenticationToken); //We add the token as a valid one to the manager
+        return authenticationManager.authenticate(authenticationToken); //We authenticate the token to check if the user data is valid
     }
 
     //Executed if authentication is successful to give the user his JWT token
