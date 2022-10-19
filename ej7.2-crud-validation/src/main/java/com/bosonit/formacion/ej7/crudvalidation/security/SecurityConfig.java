@@ -48,7 +48,7 @@ public class SecurityConfig {
         http.authorizeRequests().antMatchers(POST, "/**").hasAnyAuthority("admin"); //"**" in a route is a wildcard
         http.authorizeRequests().antMatchers(PUT, "/**").hasAnyAuthority("admin");
         http.authorizeRequests().antMatchers(DELETE, "/**").hasAnyAuthority("admin");
-        http.authorizeRequests().antMatchers(GET, "/teacher/**").permitAll();
+        http.authorizeRequests().antMatchers(GET, "/teacher/**", "/api/refreshtoken").permitAll();
         http.authorizeRequests().anyRequest().authenticated(); //Allows only authenticated user
         //http.authorizeRequests().anyRequest().permitAll(); //Allows everyone to access all the resources
         //http.authorizeRequests().antMatchers(GET, "/test").permitAll(); //Allows everyone to access this resource
