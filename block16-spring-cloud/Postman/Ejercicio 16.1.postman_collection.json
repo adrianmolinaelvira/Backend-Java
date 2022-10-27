@@ -1,0 +1,303 @@
+{
+	"info": {
+		"_postman_id": "d2536340-998d-4be9-8eef-03722063fc45",
+		"name": "Ejercicio 16.1",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "22787527"
+	},
+	"item": [
+		{
+			"name": "Backend",
+			"item": [
+				{
+					"name": "Client",
+					"item": [
+						{
+							"name": "addClient",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Adrián\",\r\n    \"surname\": \"Molina\",\r\n    \"age\": 25,\r\n    \"phone_number\": 123445566,\r\n    \"email\": \"adrian@api.com\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8080/client",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"client"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "updateClient",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Adrián\",\r\n    \"surname\": \"Molina\",\r\n    \"age\": 25,\r\n    \"phone_number\": 123445568,\r\n    \"email\": \"adrian@api.com\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8080/client/1",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"client",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getClientById",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/client/1",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"client",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getAllClients",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/client/all",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"client",
+										"all"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "deleteClientById",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/client/1",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"client",
+										"1"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Trip",
+					"item": [
+						{
+							"name": "createTrip",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"origin\": \"Guadalajara\",\r\n    \"destination\": \"Barcelona\",\r\n    \"departureDate\": \"2022-11-12T14:00:00\",\r\n    \"arrivalDate\":\"2022-11-12T19:30:00\",\r\n    \"status\": true\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8080/trip",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"trip"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getTripById",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/trip/2",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"trip",
+										"2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "updateTrip",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/trip/2",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"trip",
+										"2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "deleteTripById",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/trip/2",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"trip",
+										"2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "verifyTravel",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/trip/verify/3",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"trip",
+										"verify",
+										"3"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "changeStatus",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/trip/3/false",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"trip",
+										"3",
+										"false"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getTotalPassenger",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/trip/passenger/count/2",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"trip",
+										"passenger",
+										"count",
+										"2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "addPassengerToTravel",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/trip/addpassenger/2/1",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"trip",
+										"addpassenger",
+										"2",
+										"1"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	]
+}
