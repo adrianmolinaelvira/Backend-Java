@@ -1,13 +1,17 @@
 package com.bosonit.formacion.BackendFrontend161.Travel.Infrastructure.Controller.Output;
 
-import com.bosonit.formacion.Backend161.Client.Infrastructure.Controller.Output.OutputClientDto;
-import com.bosonit.formacion.Backend161.Travel.Domain.Travel;
+import com.bosonit.formacion.BackendFrontend161.Client.Infrastructure.Controller.Output.OutputClientDto;
+import com.bosonit.formacion.BackendFrontend161.Travel.Domain.Travel;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 import java.util.List;
 
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class OutputTravelDto {
     Long id;
     String origin;

@@ -1,0 +1,9 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Backend-Front" type="Application" factoryName="Application">
+    <option name="MAIN_CLASS_NAME" value="com.bosonit.formacion.BackendFrontend161.Application" />
+    <module name="Backend-Frontend-16.1" />
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>

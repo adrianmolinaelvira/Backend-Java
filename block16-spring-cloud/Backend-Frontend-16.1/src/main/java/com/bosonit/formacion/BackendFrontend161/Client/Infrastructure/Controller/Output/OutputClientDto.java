@@ -1,9 +1,13 @@
 package com.bosonit.formacion.BackendFrontend161.Client.Infrastructure.Controller.Output;
 
 import com.bosonit.formacion.BackendFrontend161.Client.Domain.Client;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class OutputClientDto {
     Long id;
     String name;

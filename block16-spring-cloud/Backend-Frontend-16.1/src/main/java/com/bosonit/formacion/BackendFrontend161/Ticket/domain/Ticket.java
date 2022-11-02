@@ -27,14 +27,15 @@ public class Ticket {
     LocalDateTime departureDate;
     LocalDateTime arrivalDate;
 
-    public Ticket(InputTicketDto inputTicketDto){
-        setPassengerId(inputTicketDto.getPassengerId());
-        setPassengerName(inputTicketDto.getPassengerName());
-        setPassengerLastName(inputTicketDto.getPassengerLastName());
-        setPassengerEmail(inputTicketDto.getPassengerEmail());
-        setTripOrigin(inputTicketDto.getTripOrigin());
-        setTripDestination(inputTicketDto.getTripDestination());
-        setDepartureDate(inputTicketDto.getDepartureDate());
-        setArrivalDate(inputTicketDto.getArrivalDate());
+    public Ticket(Long passengerId, String passengerName, String passengerLastName, String passengerEmail,
+                  String tripOrigin, String tripDestination, LocalDateTime departureDate, LocalDateTime arrivalDate){
+        setPassengerId(passengerId);
+        setPassengerName(passengerName);
+        setPassengerLastName(passengerLastName);
+        setPassengerEmail(passengerEmail);
+        setTripOrigin(tripOrigin);
+        setTripDestination(tripDestination);
+        setDepartureDate(departureDate);
+        setArrivalDate(arrivalDate);
     }
 }

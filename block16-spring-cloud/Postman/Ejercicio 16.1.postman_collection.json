@@ -298,6 +298,31 @@
 					]
 				}
 			]
+		},
+		{
+			"name": "Backend-Front",
+			"item": [
+				{
+					"name": "generateTicket",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "localhost:8081/generateTicket/1/3",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"generateTicket",
+								"1",
+								"3"
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		}
 	]
 }
