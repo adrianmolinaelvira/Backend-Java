@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="c2a25986-dde2-4f9a-afff-decadb730618" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../Backend-16.1/src/main/resources/application.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Backend-Frontend-16.1/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Backend-16.1/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Backend-16.1/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Backend-16.1/src/main/java/com/bosonit/formacion/Backend161/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Backend-16.1/src/main/java/com/bosonit/formacion/Backend161/Application.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Backend-16.1/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../Backend-16.1/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Backend-Frontend-16.1/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Backend-Frontend-16.1/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Backend-Frontend-16.1/src/main/java/com/bosonit/formacion/BackendFrontend161/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Backend-Frontend-16.1/src/main/java/com/bosonit/formacion/BackendFrontend161/Application.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Backend-Frontend-16.1/src/main/java/com/bosonit/formacion/BackendFrontend161/Client/Infrastructure/Controller/ClientService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Backend-Frontend-16.1/src/main/java/com/bosonit/formacion/BackendFrontend161/Client/Infrastructure/Controller/ClientService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Backend-Frontend-16.1/src/main/java/com/bosonit/formacion/BackendFrontend161/Ticket/application/TickerServiceImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Backend-Frontend-16.1/src/main/java/com/bosonit/formacion/BackendFrontend161/Ticket/application/TicketServiceImp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Backend-Frontend-16.1/src/main/java/com/bosonit/formacion/BackendFrontend161/Travel/Infrastructure/Controller/TravelService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Backend-Frontend-16.1/src/main/java/com/bosonit/formacion/BackendFrontend161/Travel/Infrastructure/Controller/TravelService.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="Use Maven wrapper" />
+        <option name="useMavenConfig" value="true" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="2H2k3ySpTUFipQYM6TO2nSvaVDY" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "last_opened_file_path": "C:/Users/adrian.molina/Documents/Proyectos IntelliJ/Ejercicios/Backend-Java/block16-spring-cloud/Backend-16.1"
+  }
+}]]></component>
+  <component name="RunManager" selected="Docker.docker-composer.yml: Compose Deployment">
+    <configuration name="Consul" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="com.bosonit.formacion.Consul161.Application" />
+      <module name="Consul-16.1" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="docker-composer.yml: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+      <deployment type="docker-compose.yml">
+        <settings>
+          <option name="sourceFilePath" value="docker-composer.yml" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Application.Consul" />
+      <item itemvalue="Docker.docker-composer.yml: Compose Deployment" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Docker.docker-composer.yml: Compose Deployment" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="c2a25986-dde2-4f9a-afff-decadb730618" name="Changes" comment="" />
+      <created>1667490374477</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1667490374477</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>

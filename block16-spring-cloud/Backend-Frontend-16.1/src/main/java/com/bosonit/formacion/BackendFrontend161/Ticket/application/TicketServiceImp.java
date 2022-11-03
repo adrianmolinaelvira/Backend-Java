@@ -12,11 +12,18 @@ import com.bosonit.formacion.BackendFrontend161.Travel.Infrastructure.Controller
 import com.bosonit.formacion.BackendFrontend161.Travel.Infrastructure.Controller.Output.OutputTravelDto;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cloud.client.ServiceInstance;
+import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.stereotype.Service;
 
-@Service
-public class TickerServiceImp implements TicketService {
+import java.net.URI;
+import java.util.Optional;
 
+@Service
+public class TicketServiceImp implements TicketService {
+
+    @Autowired
+    DiscoveryClient discoveryClient;
     @Autowired
     TicketRepository ticketRepository;
     @Autowired
@@ -27,8 +34,11 @@ public class TickerServiceImp implements TicketService {
     @Override
     public OutputTicketDto generateTicket(Long userID, Long tripId) {
 
-        OutputClientDto outputClientDto = clientService.findById(userID);
-        OutputTravelDto outputTravelDto = travelService.findById(tripId);
+        Optional<ServiceInstance> serviceInstance = discoveryClient.getInstances("backend").stream().findFirst();
+        URI baseUrl = serviceInstance.orElseThrow(() -> new EntityNotFoundException("No services avaiable")).getUri(); //To get the actual URI, and use it instead of the default defined.
+
+        OutputClientDto outputClientDto = clientService.findById(baseUrl, userID);
+        OutputTravelDto outputTravelDto = travelService.findById(baseUrl, tripId);
 
         if(outputClientDto == null)
             throw new EntityNotFoundException("Client does not exist");
@@ -39,7 +49,7 @@ public class TickerServiceImp implements TicketService {
                 outputClientDto.getSurname(), outputClientDto.getEmail(), outputTravelDto.getOrigin(),
                 outputTravelDto.getDestination(), outputTravelDto.getDepartureDate(), outputTravelDto.getArrivalDate());
 
-        OutputTravelDto testTravel = travelService.addPassenger(tripId, userID);
+        OutputTravelDto testTravel = travelService.addPassenger(baseUrl, tripId, userID);
 
         if(testTravel == null)
             throw new UnprocessableEntityException("Passenger could not be added to the trip");

@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: backend #Sobreescribe el nombre por defecto que asigna Consul
+  cloud:
+    consul:
+      host: 0.0.0.0               #Direccion del agente Consul
+      port: 8500                       #Puerto HTTP del agente Consul
+      discovery:
+        port: 8080                    #Puerto del servicio
+        prefer-ip-address: true       #Registrar el servicio con la IP no con el hostname
+        healthCheckPath: /health      #Ruta para que Consul haga los health checks
+
