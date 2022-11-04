@@ -136,7 +136,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"origin\": \"Guadalajara\",\r\n    \"destination\": \"Barcelona\",\r\n    \"departureDate\": \"2022-11-12T14:00:00\",\r\n    \"arrivalDate\":\"2022-11-12T19:30:00\",\r\n    \"status\": true\r\n}",
+									"raw": "{\r\n    \"origin\": \"Guadalajara\",\r\n    \"destination\": \"Salamanca\",\r\n    \"departureDate\": \"2022-11-12T14:00:00\",\r\n    \"arrivalDate\":\"2022-11-12T19:30:00\",\r\n    \"status\": true\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -308,7 +308,7 @@
 						"method": "POST",
 						"header": [],
 						"url": {
-							"raw": "localhost:8081/generateTicket/1/3",
+							"raw": "localhost:8081/generateTicket/1/2",
 							"host": [
 								"localhost"
 							],
@@ -316,7 +316,7 @@
 							"path": [
 								"generateTicket",
 								"1",
-								"3"
+								"2"
 							]
 						}
 					},
