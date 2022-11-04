@@ -3,4 +3,31 @@ services:
   consul:
     image: consul
     ports:
-      - 8500:8500
+      - "8500:8500"
+    networks:
+      - consulnetwork
+  backend:
+    image: backend
+    ports:
+      - "8080:8080"
+    build: .
+    environment:
+      CONSUL_URL: consul
+    depends_on:
+      - consul
+    networks:
+      - consulnetwork
+  backend_frontend:
+    image: backend_frontend
+    build: ../Backend-Frontend-16.1/.
+    ports:
+      - "8081:8081"
+    networks:
+      - consulnetwork
+    environment:
+      CONSUL_URL: consul
+    depends_on:
+      - consul
+networks:
+  consulnetwork:
+

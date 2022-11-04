@@ -5,16 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c2a25986-dde2-4f9a-afff-decadb730618" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../Backend-16.1/src/main/resources/application.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Backend-Frontend-16.1/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Backend-16.1/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Backend-16.1/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Backend-16.1/src/main/java/com/bosonit/formacion/Backend161/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Backend-16.1/src/main/java/com/bosonit/formacion/Backend161/Application.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Backend-16.1/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../Backend-16.1/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Backend-Frontend-16.1/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Backend-Frontend-16.1/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Backend-Frontend-16.1/src/main/java/com/bosonit/formacion/BackendFrontend161/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Backend-Frontend-16.1/src/main/java/com/bosonit/formacion/BackendFrontend161/Application.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Backend-Frontend-16.1/src/main/java/com/bosonit/formacion/BackendFrontend161/Client/Infrastructure/Controller/ClientService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Backend-Frontend-16.1/src/main/java/com/bosonit/formacion/BackendFrontend161/Client/Infrastructure/Controller/ClientService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Backend-Frontend-16.1/src/main/java/com/bosonit/formacion/BackendFrontend161/Ticket/application/TickerServiceImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Backend-Frontend-16.1/src/main/java/com/bosonit/formacion/BackendFrontend161/Ticket/application/TicketServiceImp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Backend-Frontend-16.1/src/main/java/com/bosonit/formacion/BackendFrontend161/Travel/Infrastructure/Controller/TravelService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Backend-Frontend-16.1/src/main/java/com/bosonit/formacion/BackendFrontend161/Travel/Infrastructure/Controller/TravelService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,17 +39,30 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "C:/Users/adrian.molina/Documents/Proyectos IntelliJ/Ejercicios/Backend-Java/block16-spring-cloud/Backend-16.1"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/adrian.molina/Documents/Proyectos IntelliJ/Ejercicios/Backend-Java/block16-spring-cloud/Backend-16.1&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Docker.docker-composer.yml: Compose Deployment">
     <configuration name="Consul" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="com.bosonit.formacion.Consul161.Application" />
       <module name="Consul-16.1" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="Consul-16.1" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="Consul-16.1" />
+      <option name="filePath" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>

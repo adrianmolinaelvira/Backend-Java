@@ -3,7 +3,7 @@ spring:
     name: backend #Sobreescribe el nombre por defecto que asigna Consul
   cloud:
     consul:
-      host: 0.0.0.0               #Direccion del agente Consul
+      host: ${CONSUL_URL:0.0.0.0}      #Direccion del agente Consul
       port: 8500                       #Puerto HTTP del agente Consul
       discovery:
         port: 8080                    #Puerto del servicio

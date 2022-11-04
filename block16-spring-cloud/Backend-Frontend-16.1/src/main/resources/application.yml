@@ -3,7 +3,7 @@ spring:
     name: client
   cloud:
     consul:
-      host: 0.0.0.0
+      host: ${CONSUL_URL:0.0.0.0}
       port: 8500
       discovery:
         register: false #Decidimos si queremos que la app se registre o no en el servidor de Consul
