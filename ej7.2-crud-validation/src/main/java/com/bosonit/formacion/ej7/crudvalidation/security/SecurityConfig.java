@@ -42,7 +42,7 @@ public class SecurityConfig {
         http.addFilterBefore(new CustomAuthorizationFilter(), UsernamePasswordAuthenticationFilter.class); //Adds the filter before any other filter
 
         //Endpoints filter
-        http.csrf().disable(); //Because it is a REST API, and we don't save user date between sessions (Stateless app)
+        http.csrf().disable(); //Because it is a REST API, and we don't save user data between sessions (Stateless app)
         http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
         http.authorizeRequests().antMatchers(POST, "/addperson").hasAnyAuthority("admin"); //Only rol "admin" can access to POST "/addperson"
         http.authorizeRequests().antMatchers(POST, "/**").hasAnyAuthority("admin"); //"**" in a route is a wildcard
