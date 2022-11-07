@@ -52,17 +52,18 @@ public class PersonServiceImp implements PersonService{
         if(newPersonDto.getCreated_date() == null)
             throw new UnprocessableEntityException("Created date can not be null");
 
-        Person newPerson = newPersonDto.transformIntoPerson();
 
         Criteria criteria = new Criteria();
-        criteria.orOperator(Criteria.where("personal_email").is(newPerson.getPersonal_email())
-                ,Criteria.where("company_email").is(newPerson.getCompany_email()));
+        criteria.orOperator(Criteria.where("personal_email").is(newPersonDto.getPersonal_email())
+                ,Criteria.where("company_email").is(newPersonDto.getCompany_email()));
         Query query = new Query(criteria); //We pass the criteria to the new query
 
         List<Person> personList = mongoTemplate.find(query, Person.class); //Use of Mongo Template to execute the query
 
         if(!personList.isEmpty())
             throw new UnprocessableEntityException("Person email or Company email is already in use");
+
+        Person newPerson = newPersonDto.transformIntoPerson();
 
         personRepository.save(newPerson);
 
