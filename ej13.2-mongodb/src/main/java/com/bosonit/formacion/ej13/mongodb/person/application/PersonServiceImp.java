@@ -9,6 +9,9 @@ import com.bosonit.formacion.ej13.mongodb.person.infraestructure.repository.Pers
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.data.domain.*;
+import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.query.Criteria;
+import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
@@ -21,6 +24,8 @@ public class PersonServiceImp implements PersonService{
 
     @Autowired
     PersonRepository personRepository;
+    @Autowired
+    MongoTemplate mongoTemplate;
 
     @Override
     public PersonOutputDto addPerson(PersonInputDto newPersonDto) {
@@ -48,6 +53,16 @@ public class PersonServiceImp implements PersonService{
             throw new UnprocessableEntityException("Created date can not be null");
 
         Person newPerson = newPersonDto.transformIntoPerson();
+
+        Criteria criteria = new Criteria();
+        criteria.orOperator(Criteria.where("personal_email").is(newPerson.getPersonal_email())
+                ,Criteria.where("company_email").is(newPerson.getCompany_email()));
+        Query query = new Query(criteria); //We pass the criteria to the new query
+
+        List<Person> personList = mongoTemplate.find(query, Person.class); //Use of Mongo Template to execute the query
+
+        if(!personList.isEmpty())
+            throw new UnprocessableEntityException("Person email or Company email is already in use");
 
         personRepository.save(newPerson);
 
@@ -81,15 +96,28 @@ public class PersonServiceImp implements PersonService{
 
         Person person = personOpt.get();
 
+        if(!person.getPersonal_email().equals(personInputDto.getPersonal_email()) || !person.getCompany_email().equals(personInputDto.getCompany_email())){
+            Criteria criteria = new Criteria();
+            criteria.orOperator(Criteria.where("personal_email").is(personInputDto.getPersonal_email())
+                    ,Criteria.where("company_email").is(personInputDto.getCompany_email()));
+            Query query = new Query(criteria); //We pass the criteria to the new query
+
+            List<Person> personList = mongoTemplate.find(query, Person.class); //Use of Mongo Template to execute the query
+
+            if(!personList.isEmpty())
+                throw new UnprocessableEntityException("Person email or Company email is already in use");
+        }
+
         person.setUsername(personInputDto.getUsername());
         person.setPassword(personInputDto.getPassword());
         person.setName(personInputDto.getName());
         person.setSurname(personInputDto.getSurname());
         person.setCompany_email(personInputDto.getCompany_email());
-        person.setPersonal_email(personInputDto.getCompany_email());
+        person.setPersonal_email(personInputDto.getPersonal_email());
         person.setCity(personInputDto.getCity());
         person.setActive(personInputDto.getActive());
         person.setImage_url(personInputDto.getImage_url());
+
 
         personRepository.save(person);
 
