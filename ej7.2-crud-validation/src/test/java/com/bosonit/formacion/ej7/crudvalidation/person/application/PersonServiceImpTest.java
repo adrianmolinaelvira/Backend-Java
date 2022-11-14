@@ -16,7 +16,9 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.data.domain.*;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 
 import java.util.*;
@@ -41,6 +43,8 @@ class PersonServiceImpTest {
     private TeacherRepository teacherRepository;
     @Mock
     private StudentRepository studentRepository;
+    @Mock
+    private PasswordEncoder passwordEncoder;
     @InjectMocks
     private PersonService personService = new PersonServiceImp();
 
